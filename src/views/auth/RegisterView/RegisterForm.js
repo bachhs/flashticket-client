@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import PropTypes from 'prop-types';
 import {
   makeStyles,
   TextField,
@@ -15,7 +17,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-function RegisterForm() {
+function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
   const classes = useStyles();
   return (
     <Formik
@@ -29,20 +31,47 @@ function RegisterForm() {
       }}
       validate={(values) => {
         const errors = {};
+
+        if (!values.name) {
+          errors.name = 'Vui lòng nhập tên';
+        }
+
+        if (!values.phone) {
+          errors.phone = 'Vui lòng nhập số điện thoại';
+        } else if (
+          !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/i.test(values.phone)
+        ) {
+          errors.phone = 'Vui lòng nhập đúng định dạng số điện thoại';
+        }
+
         if (!values.email) {
-          errors.email = 'Required';
+          errors.email = 'Vui lòng nhập email';
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
         ) {
-          errors.email = 'Invalid email address';
+          errors.email = 'Vui lòng nhập đúng định dạng email';
         }
+
+        if (!values.password) {
+          errors.password = 'Vui lòng nhập mật khẩu';
+        }
+
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+      onSubmit={async (values, {
+        setErrors,
+        setStatus,
+        setSubmitting
+      }) => {
+        /* try {
+          await dispatch(register(values));
+          onSubmitSuccess();
+        } catch (error) {
+          setStatus({ success: false });
+          setErrors({ submit: error.message });
+          onSubmitFail(error);
           setSubmitting(false);
-        }, 400);
+        } */
       }}
     >
       {({
@@ -57,36 +86,57 @@ function RegisterForm() {
         <form className={classes.root}>
           <TextField
             fullWidth
+            name="name"
             value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.name && errors.name)}
+            helperText={touched.name && errors.name}
             label="Họ và Tên"
             margin="normal"
             variant="outlined"
           />
           <TextField
             fullWidth
+            name="phone"
             value={values.phone}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.phone && errors.phone)}
+            helperText={touched.phone && errors.phone}
             label="Số điện thoại"
             margin="normal"
             variant="outlined"
           />
           <TextField
             fullWidth
+            name="email"
             value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.email && errors.email)}
+            helperText={touched.email && errors.email}
             label="Email"
             margin="normal"
             variant="outlined"
           />
           <TextField
             fullWidth
+            name="password"
             value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.password && errors.password)}
+            helperText={touched.password && errors.password}
             label="Mật khẩu"
             type="password"
             margin="normal"
             variant="outlined"
-            autoComplete="current-password"
+            autoComplete="new-password"
           />
           <Grid container>
             <Grid
+              item
               xs={8}
               lg={8}
             >
@@ -105,6 +155,7 @@ function RegisterForm() {
               />
             </Grid>
             <Grid
+              item
               xs={4}
               lg={4}
             >
@@ -119,5 +170,15 @@ function RegisterForm() {
     </Formik>
   );
 }
+
+RegisterForm.propTypes = {
+  onSubmitSuccess: PropTypes.func,
+  onSubmitFail: PropTypes.func
+};
+
+RegisterForm.defaultProps = {
+  onSubmitSuccess: () => {},
+  onSubmitFail: () => {}
+};
 
 export default RegisterForm;
