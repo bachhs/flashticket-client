@@ -5,7 +5,10 @@ import {
   TextField,
   Grid,
   Radio,
-  Box
+  Box,
+  FormControl,
+  FormLabel,
+  RadioGroup
 } from '@material-ui/core';
 import { Formik } from 'formik';
 import React from 'react';
@@ -96,6 +99,48 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
             margin="normal"
             variant="outlined"
           />
+          <Grid
+            container
+          >
+            <Grid
+              item
+              xs={12}
+              sm={8}
+            >
+              <KeyboardDatePicker
+                fullWidth
+                disableToolbar
+                variant="inline"
+                format="DD/MM/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                label="Ngày sinh"
+                value={values.birthday}
+                onChange={() => {}}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+              />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              alignContent="center"
+              alignItems="center"
+            >
+              <Box mt={2.3} ml={2}>
+                <FormControl>
+                  <FormLabel>Gender</FormLabel>
+                  <RadioGroup row>
+                    <FormControlLabel value="end" control={<Radio color="primary" />} label="Nam" />
+                    <FormControlLabel value="end" control={<Radio color="primary" />} label="Nữ" />
+                  </RadioGroup>
+                </FormControl>
+
+              </Box>
+            </Grid>
+          </Grid>
           <TextField
             fullWidth
             name="phone"
@@ -134,37 +179,6 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
             variant="outlined"
             autoComplete="new-password"
           />
-          <Grid container>
-            <Grid
-              item
-              xs={8}
-              lg={8}
-            >
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="DD/MM/yyyy"
-                margin="normal"
-                id="date-picker-inline"
-                label="Ngày sinh"
-                value={values.birthday}
-                onChange={() => {}}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={4}
-              lg={4}
-            >
-              <Box>
-                <FormControlLabel value="end" control={<Radio color="primary" />} label="Nam" />
-                <FormControlLabel value="end" control={<Radio color="primary" />} label="Nữ" />
-              </Box>
-            </Grid>
-          </Grid>
         </form>
       )}
     </Formik>

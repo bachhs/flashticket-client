@@ -13,16 +13,27 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import Page from 'src/components/Page';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import RegisterForm from './RegisterForm';
 
 const useStyles = makeStyles(() => ({
   bg: {
     minHeight: '100vh',
-    backgroundImage: `url(${'/static/images/bgRes.jpg'})`,
+    background: 'rgba(255,255,255,0.2)',
+    backgroundImage: `url(${'/static/images/bgResgiter.jpg'})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    opacity: '0.8'
+    opacity: '0.8',
+    '&:before': {
+      position: 'absolute',
+      content: '" "',
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: '100%',
+      backgroundImage: 'linear-gradient(-180deg, rgba(0,0,0,0.00) 58%, rgba(0,0,0,0.32) 100%)'
+    }
   },
   root: {
     justifyContent: 'center',
@@ -32,9 +43,14 @@ const useStyles = makeStyles(() => ({
     paddingTop: 80
   },
   Title: {
-    color: 'yellow',
-    fontFamily: '"Segoe UI"',
-    fontWeight: 'bold'
+    color: 'black',
+    opacity: 0.9,
+    fontWeight: 'bold',
+    fontSize: 24
+  },
+  button: {
+    color: '#ffffff',
+    opacity: 0.95
   }
 }));
 
@@ -44,8 +60,33 @@ function RegisterView() {
     <div className={classes.bg}>
       <Page className={classes.root}>
         <Container maxWidth="sm">
+          <Box
+            display="flex"
+            alignItems="center"
+            mb={1}
+          >
+            <Button
+              variant="outline"
+              color="secondary"
+              className={classes.button}
+              startIcon={<KeyboardBackspaceIcon />}
+            >
+              Trở về trang chủ
+            </Button>
+          </Box>
           <Card>
             <CardContent>
+              <Box
+                mt={1}
+                mb={3.5}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Typography className={classes.Title}>
+                  Tạo tài khoản FlashTicket của bạn
+                </Typography>
+              </Box>
               <Box>
                 <RegisterForm />
               </Box>
