@@ -9,7 +9,7 @@ function Routes() {
         <Route
           exact
           path="/"
-          component={lazy(() => import('src/views/Home'))}
+          component={lazy(() => import('src/views/HomeView'))}
         />
         <Route
           exact

@@ -15,15 +15,6 @@ import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import LoginForm from './LoginForm';
 
 const useStyles = makeStyles((theme) => ({
-  bg: {
-    minHeight: '100vh',
-    background: 'rgba(255,255,255,0.2)',
-    backgroundImage: `url(${'/static/images/bgLogin.jpg'})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    opacity: '0.8'
-  },
   root: {
     justifyContent: 'center',
     display: 'flex',
@@ -57,58 +48,56 @@ const useStyles = makeStyles((theme) => ({
 function LoginView() {
   const classes = useStyles();
   return (
-    <div className={classes.bg}>
-      <Page className={classes.root}>
-        <Container maxWidth="sm">
-          <Box
-            mt={1}
-            mb={0.5}
-            display="flex"
-            justifyContent="center"
-          >
-            <AccountCircleRoundedIcon className={classes.logo} />
-          </Box>
-          <Box
-            mt={1}
-            mb={3.5}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Typography className={classes.Title}>
+    <Page className={classes.root}>
+      <Container maxWidth="sm">
+        <Box
+          mt={1}
+          mb={0.5}
+          display="flex"
+          justifyContent="center"
+        >
+          <AccountCircleRoundedIcon className={classes.logo} />
+        </Box>
+        <Box
+          mt={1}
+          mb={3.5}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Typography className={classes.Title}>
+            Đăng nhập
+          </Typography>
+        </Box>
+        <Card className={classes.card}>
+          <CardContent>
+            <Box>
+              <LoginForm />
+            </Box>
+            <Box my={2}>
+              <Divider />
+            </Box>
+            <Button
+              variant="contained"
+              color="secondary"
+              fullWidth
+            >
               Đăng nhập
-            </Typography>
-          </Box>
-          <Card className={classes.card}>
-            <CardContent>
-              <Box>
-                <LoginForm />
-              </Box>
-              <Box my={2}>
-                <Divider />
-              </Box>
-              <Button
-                variant="contained"
-                color="secondary"
-                fullWidth
+            </Button>
+            <Box mt={2}>
+              <Typography
+                variant="body2"
+                color="textSecondary"
               >
-                Đăng nhập
-              </Button>
-              <Box mt={2}>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                >
-                  <Link href="register">
-                    Bạn chưa có tài khoản?
-                  </Link>
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        </Container>
-      </Page>
-    </div>
+                <Link href="register">
+                  Bạn chưa có tài khoản?
+                </Link>
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      </Container>
+    </Page>
   );
 }
 
