@@ -18,40 +18,39 @@ const useStyles = makeStyles((theme) => ({
   bg: {
     minHeight: '100vh',
     background: 'rgba(255,255,255,0.2)',
-    backgroundImage: `url(${'/static/images/bgResgiter.jpg'})`,
+    backgroundImage: `url(${'/static/images/bgLogin.jpg'})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     opacity: '0.8',
-    '&:before': {
-      position: 'absolute',
-      content: '" "',
-      top: 0,
-      left: 0,
-      height: '100%',
-      width: '100%',
-      backgroundImage: 'linear-gradient(-180deg, rgba(0,0,0,0.00) 58%, rgba(0,0,0,0.32) 100%)'
-    }
   },
   root: {
     justifyContent: 'center',
     display: 'flex',
     minHeight: '100%',
     paddingBottom: 120,
-    paddingTop: 220,
+    paddingTop: 120,
     [theme.breakpoints.down('sm')]: {
-      paddingTop: 100
+      paddingTop: 50
     },
+    borderRadius: 60
   },
   Title: {
     color: 'black',
-    opacity: 0.9,
+    opacity: 0.85,
     fontWeight: 'bold',
-    fontSize: 24
+    fontSize: 30
   },
   button: {
     color: '#ffffff',
     opacity: 0.95
+  },
+  logo: {
+    fontSize: 130,
+    color: 'black'
+  },
+  card: {
+    paddingTop: 10
   }
 }));
 
@@ -63,27 +62,25 @@ function LoginView() {
         <Container maxWidth="sm">
           <Box
             mt={1}
+            mb={0.5}
+            display="flex"
+            justifyContent="center"
+          >
+            <AccountCircleRoundedIcon className={classes.logo} />
+          </Box>
+          <Box
+            mt={1}
             mb={3.5}
             display="flex"
             justifyContent="center"
-            maxWidth={130}
-            style={{ backgroundColor: '#000000', borderRadius: 6000 }}
+            alignItems="center"
           >
-            <AccountCircleRoundedIcon style={{ fontSize: 130 }} />
+            <Typography className={classes.Title}>
+              Đăng nhập
+            </Typography>
           </Box>
-          <Card>
+          <Card className={classes.card}>
             <CardContent>
-              <Box
-                mt={1}
-                mb={3.5}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Typography className={classes.Title}>
-                  Đăng nhập
-                </Typography>
-              </Box>
               <Box>
                 <LoginForm />
               </Box>

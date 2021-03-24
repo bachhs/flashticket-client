@@ -16,24 +16,21 @@ import Page from 'src/components/Page';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import RegisterForm from './RegisterForm';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   bg: {
-    minHeight: '100vh',
+    height: '100%',
     background: 'rgba(255,255,255,0.2)',
     backgroundImage: `url(${'/static/images/bgResgiter.jpg'})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     opacity: '0.8',
-    '&:before': {
-      position: 'absolute',
-      content: '" "',
-      top: 0,
-      left: 0,
-      height: '100%',
-      width: '100%',
-      backgroundImage: 'linear-gradient(-180deg, rgba(0,0,0,0.00) 58%, rgba(0,0,0,0.32) 100%)'
-    }
+    paddingTop: '2%',
+    paddingBottom: '2%',
+    [theme.breakpoints.down('lg')]: {
+      paddingTop: '25%',
+      paddingBottom: '25%'
+    },
   },
   root: {
     justifyContent: 'center',
