@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    opacity: '0.8',
+    opacity: '0.8'
   },
   root: {
     justifyContent: 'center',
