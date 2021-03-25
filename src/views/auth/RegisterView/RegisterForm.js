@@ -83,6 +83,8 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
         touched,
         handleChange,
         handleBlur,
+        setFieldValue,
+        setFieldTouched,
         handleSubmit,
         isSubmitting,
       }) => (
@@ -99,48 +101,39 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
             margin="normal"
             variant="outlined"
           />
-          <Grid
-            container
-          >
-            <Grid
-              item
-              xs={12}
-              sm={8}
-            >
-              <KeyboardDatePicker
-                fullWidth
-                disableToolbar
-                variant="inline"
-                format="DD/MM/yyyy"
-                margin="normal"
-                id="date-picker-inline"
-                label="Ngày sinh"
-                value={values.birthday}
-                onChange={() => {}}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              alignContent="center"
-              alignItems="center"
-            >
-              <Box mt={2.3} ml={2}>
-                <FormControl>
-                  <FormLabel>Gender</FormLabel>
-                  <RadioGroup row>
-                    <FormControlLabel value="end" control={<Radio color="primary" />} label="Nam" />
-                    <FormControlLabel value="end" control={<Radio color="primary" />} label="Nữ" />
-                  </RadioGroup>
-                </FormControl>
-
-              </Box>
-            </Grid>
+          <Grid container justify="space-around">
+            <KeyboardDatePicker
+              fullWidth
+              disableToolbar
+              inputVariant="outlined"
+              variant="inline"
+              format="DD/MM/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              label="Ngày sinh"
+              value={values.birthday}
+              onBlur={() => setFieldTouched('birthday')}
+              onClose={() => setFieldTouched('birthday')}
+              onAccept={() => setFieldTouched('birthday')}
+              onChange={(date) => setFieldValue('birthday', date)}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
           </Grid>
+          <Box>
+            <FormLabel>Giới tính</FormLabel>
+            <RadioGroup
+              row
+              name="gender"
+              aria-label="role"
+              value={values.gender}
+              onChange={handleChange}
+            >
+              <FormControlLabel value="male" control={<Radio color="primary" />} label="Nam" />
+              <FormControlLabel value="female" control={<Radio color="primary" />} label="Nữ" />
+            </RadioGroup>
+          </Box>
           <TextField
             fullWidth
             name="phone"

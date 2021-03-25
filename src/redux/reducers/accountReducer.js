@@ -9,7 +9,7 @@ import {
   UPDATE_PROFILE,
   REGISTER_FAILURE,
   REGISTER_SUCCESS
-} from 'src/actions/accountActions';
+} from 'src/redux/actions/accountActions';
 
 const initialState = {
   user: null

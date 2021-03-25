@@ -46,7 +46,7 @@ function RegisterView() {
           mb={1}
         >
           <Button
-            variant="outline"
+            variant="outlined"
             color="secondary"
             className={classes.button}
             startIcon={<KeyboardBackspaceIcon />}
