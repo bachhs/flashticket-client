@@ -26,7 +26,7 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
     <Formik
       initialValues={{
         name: '',
-        phone: '',
+        phoneNumber: '',
         email: '',
         password: '',
         birthday: new Date(),
@@ -39,12 +39,12 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
           errors.name = 'Vui lòng nhập tên';
         }
 
-        if (!values.phone) {
-          errors.phone = 'Vui lòng nhập số điện thoại';
+        if (!values.phoneNumber) {
+          errors.phoneNumber = 'Vui lòng nhập số điện thoại';
         } else if (
-          !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/i.test(values.phone)
+          !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/i.test(values.phoneNumber)
         ) {
-          errors.phone = 'Vui lòng nhập đúng định dạng số điện thoại';
+          errors.phoneNumber = 'Vui lòng nhập đúng định dạng số điện thoại';
         }
 
         if (!values.email) {
@@ -136,12 +136,12 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
           </Box>
           <TextField
             fullWidth
-            name="phone"
-            value={values.phone}
+            name="phoneNumber"
+            value={values.phoneNumber}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={Boolean(touched.phone && errors.phone)}
-            helperText={touched.phone && errors.phone}
+            error={Boolean(touched.phoneNumber && errors.phoneNumber)}
+            helperText={touched.phoneNumber && errors.phoneNumber}
             label="Số điện thoại"
             margin="normal"
             variant="outlined"

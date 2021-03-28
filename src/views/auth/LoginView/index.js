@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 function LoginView() {
   const classes = useStyles();
   return (
-    <Page className={classes.root}>
+    <Page title="Login" className={classes.root}>
       <Container maxWidth="sm">
         <Box
           mt={1}

@@ -1,16 +1,12 @@
 import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import LoadingScreen from './components/LoadingScreen';
+import MainLayout from 'src/layout/MainLayout';
+import LoadingScreen from 'src/components/LoadingScreen';
 
 function Routes() {
   return (
     <Suspense fallback={<LoadingScreen />}>
       <Switch>
-        <Route
-          exact
-          path="/"
-          component={lazy(() => import('src/views/HomeView'))}
-        />
         <Route
           exact
           path="/login"
@@ -25,6 +21,20 @@ function Routes() {
           exact
           path="/404"
           component={lazy(() => import('src/views/pages/Error404View'))}
+        />
+        <Route
+          path="*"
+          render={(props) => (
+            <MainLayout {...props}>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  component={lazy(() => import('src/views/HomeView'))}
+                />
+              </Switch>
+            </MainLayout>
+          )}
         />
         <Redirect to="/404" />
       </Switch>

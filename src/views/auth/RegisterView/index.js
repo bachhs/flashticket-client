@@ -24,12 +24,6 @@ const useStyles = makeStyles(() => ({
     paddingBottom: 120,
     paddingTop: 80
   },
-  Title: {
-    color: 'black',
-    opacity: 0.9,
-    fontWeight: 'bold',
-    fontSize: 24
-  },
   button: {
     opacity: 0.95
   }
@@ -38,7 +32,7 @@ const useStyles = makeStyles(() => ({
 function RegisterView() {
   const classes = useStyles();
   return (
-    <Page className={classes.root}>
+    <Page title="Register" className={classes.root}>
       <Container maxWidth="sm">
         <Box
           display="flex"
@@ -63,8 +57,8 @@ function RegisterView() {
               justifyContent="center"
               alignItems="center"
             >
-              <Typography className={classes.Title}>
-                Tạo tài khoản FlashTicket của bạn
+              <Typography variant="h5" gutterBottom>
+                Create your Flash Ticket account
               </Typography>
             </Box>
             <Box>
