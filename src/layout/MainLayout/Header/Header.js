@@ -31,8 +31,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexFlow: 'row nowrap',
     justifyContent: 'flex-start',
-    position: 'relative',
-    zIndex: 'unset'
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 999
   },
   absolute: {
     position: 'absolute',
