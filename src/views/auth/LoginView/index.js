@@ -12,6 +12,8 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import { useHistory } from 'react-router-dom';
+
 import LoginForm from './LoginForm';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +49,12 @@ const useStyles = makeStyles((theme) => ({
 
 function LoginView() {
   const classes = useStyles();
+  const history = useHistory();
+
+  const onSubmitSuccess = () => {
+    history.push('/');
+  };
+
   return (
     <Page title="Login" className={classes.root}>
       <Container maxWidth="sm">
@@ -72,18 +80,8 @@ function LoginView() {
         <Card className={classes.card}>
           <CardContent>
             <Box>
-              <LoginForm />
+              <LoginForm onSubmitSuccess={onSubmitSuccess} />
             </Box>
-            <Box my={2}>
-              <Divider />
-            </Box>
-            <Button
-              variant="contained"
-              color="secondary"
-              fullWidth
-            >
-              Đăng nhập
-            </Button>
             <Box mt={2}>
               <Typography
                 variant="body2"

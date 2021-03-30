@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   makeStyles,
+  Button,
+  Checkbox,
   TextField,
   Grid,
   Radio,
@@ -11,9 +15,9 @@ import {
   RadioGroup
 } from '@material-ui/core';
 import { Formik } from 'formik';
-import React from 'react';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { register } from 'src/redux/actions/accountActions';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,6 +26,8 @@ const useStyles = makeStyles(() => ({
 
 function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -66,7 +72,7 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
         setStatus,
         setSubmitting
       }) => {
-        /* try {
+        try {
           await dispatch(register(values));
           onSubmitSuccess();
         } catch (error) {
@@ -74,7 +80,7 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
           setErrors({ submit: error.message });
           onSubmitFail(error);
           setSubmitting(false);
-        } */
+        }
       }}
     >
       {({
@@ -88,7 +94,10 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
         handleSubmit,
         isSubmitting,
       }) => (
-        <form className={classes.root}>
+        <form
+          onSubmit={handleSubmit}
+          className={classes.root}
+        >
           <TextField
             fullWidth
             name="name"
@@ -172,6 +181,23 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
             variant="outlined"
             autoComplete="new-password"
           />
+          <Box mb={1}>
+            <FormControlLabel
+              control={(
+                <Checkbox color="primary" />
+              )}
+              label="Tôi đồng ý với Điều khoản sử dụng của FlashTicket"
+            />
+          </Box>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disable={isSubmitting}
+            fullWidth
+          >
+            Đăng kí
+          </Button>
         </form>
       )}
     </Formik>

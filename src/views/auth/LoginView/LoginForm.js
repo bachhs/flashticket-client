@@ -1,19 +1,27 @@
-/* eslint-disable no-unused-vars */
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Box,
+  Button,
+  Divider,
   makeStyles,
   TextField,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import React from 'react';
+
+import { login } from 'src/redux/actions/accountActions';
 
 const useStyles = makeStyles(() => ({
   root: {
   }
 }));
 
-function LoginForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
+function LoginForm({ onSubmitSuccess, onSubmitFail }) {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -42,7 +50,7 @@ function LoginForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
         setStatus,
         setSubmitting
       }) => {
-        /* try {
+        try {
           await dispatch(login(values.email, values.password));
           onSubmitSuccess();
         } catch (error) {
@@ -51,7 +59,7 @@ function LoginForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
           setStatus({ success: false });
           setErrors({ submit: message });
           setSubmitting(false);
-        } */
+        }
       }}
     >
       {({
@@ -63,7 +71,10 @@ function LoginForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
         handleSubmit,
         isSubmitting,
       }) => (
-        <form className={classes.root}>
+        <form
+          onSubmit={handleSubmit}
+          className={classes.root}
+        >
           <TextField
             name="email"
             type="email"
@@ -91,6 +102,18 @@ function LoginForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
             variant="outlined"
             autoComplete="current-password"
           />
+          <Box my={2}>
+            <Divider />
+          </Box>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disable={isSubmitting}
+            fullWidth
+          >
+            Đăng nhập
+          </Button>
         </form>
       )}
     </Formik>

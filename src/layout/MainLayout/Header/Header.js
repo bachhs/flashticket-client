@@ -14,7 +14,8 @@ import {
 } from '@material-ui/core';
 import Menu from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+
+import Account from './Account';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -181,15 +182,7 @@ function Header({ fixed, absolute }) {
             </ListItem>
           </List>
         </Hidden>
-        <IconButton
-          edge="end"
-          aria-label="account of current user"
-          aria-haspopup="true"
-          color="inherit"
-          className={classes.accountIcon}
-        >
-          <AccountCircle style={{ fontSize: 30 }} />
-        </IconButton>
+        <Account />
         <Hidden lgUp>
           <IconButton
             aria-label="open drawer"

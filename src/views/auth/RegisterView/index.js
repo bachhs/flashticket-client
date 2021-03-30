@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Container,
   makeStyles,
@@ -7,11 +8,9 @@ import {
   Divider,
   Link,
   Box,
-  Checkbox,
-  FormControlLabel,
   Button
 } from '@material-ui/core';
-import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Page from 'src/components/Page';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import RegisterForm from './RegisterForm';
@@ -31,6 +30,13 @@ const useStyles = makeStyles(() => ({
 
 function RegisterView() {
   const classes = useStyles();
+
+  const history = useHistory();
+
+  const onSubmitSuccess = () => {
+    history.push('/');
+  };
+
   return (
     <Page title="Register" className={classes.root}>
       <Container maxWidth="sm">
@@ -41,7 +47,8 @@ function RegisterView() {
         >
           <Button
             variant="outlined"
-            color="secondary"
+            color="primary"
+            href="/"
             className={classes.button}
             startIcon={<KeyboardBackspaceIcon />}
           >
@@ -62,26 +69,11 @@ function RegisterView() {
               </Typography>
             </Box>
             <Box>
-              <RegisterForm />
+              <RegisterForm onSubmitSuccess={onSubmitSuccess} />
             </Box>
             <Box my={2}>
               <Divider />
             </Box>
-            <Box mb={1}>
-              <FormControlLabel
-                control={(
-                  <Checkbox />
-              )}
-                label="Tôi đồng ý với Điều khoản sử dụng của FlashTicket"
-              />
-            </Box>
-            <Button
-              variant="contained"
-              color="secondary"
-              fullWidth
-            >
-              Đăng kí
-            </Button>
             <Box mt={2}>
               <Typography
                 variant="body2"
