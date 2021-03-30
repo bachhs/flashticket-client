@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#ddd',
   },
   slideFake: {
-    backgroundImage: `url(${'/static/images/slideFake/slideFake0.jpg'})`,
+    backgroundImage: `url(${'/static/images/poster/poster0.jpg'})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '85% 15%'
