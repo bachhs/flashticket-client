@@ -5,10 +5,8 @@ import {
   Typography,
   Card,
   CardContent,
-  Divider,
   Link,
   Box,
-  Button
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
