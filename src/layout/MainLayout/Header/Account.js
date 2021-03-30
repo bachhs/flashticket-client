@@ -1,72 +1,82 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
-import { logout } from 'src/redux/actions/accountActions';
+import MenuList from '@material-ui/core/MenuList';
 
 function Account() {
-  const dispatch = useDispatch();
-  const account = useSelector((state) => state.account);
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
 
-  const history = useHistory();
-
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
-    <>
-      <Button aria-controls="account-menu" aria-haspopup="true" onClick={handleOpen}>
+    <div>
+      <Button
+        ref={anchorRef}
+        aria-controls={open ? 'menu-list-grow' : undefined}
+        aria-haspopup="true"
+        onClick={handleToggle}
+      >
         <AccountCircle />
       </Button>
-      {account.user ? (
-        <Menu
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center'
-          }}
-          keepMounted
-          getContentAnchorEl={null}
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        </Menu>
-      ) : (
-        <Menu
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center'
-          }}
-          keepMounted
-          getContentAnchorEl={null}
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={() => history.push('/login')}>Login</MenuItem>
-          <MenuItem onClick={() => history.push('/register')}>Register</MenuItem>
-        </Menu>
-      )}
-
-    </>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        getContentAnchorEl={null}
+        role={undefined}
+        transition
+        disablePortal
+        placement="bottom-end"
+      >
+        {({ TransitionProps }) => (
+          <Grow
+            {...TransitionProps}
+            style={{ transformOrigin: 'center top' }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </div>
   );
 }
 
