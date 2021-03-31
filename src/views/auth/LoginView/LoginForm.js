@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import {
   Box,
   Button,
@@ -7,8 +7,9 @@ import {
   makeStyles,
   TextField,
 } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { login } from 'src/redux/actions/accountActions';
 

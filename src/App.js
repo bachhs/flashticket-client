@@ -1,15 +1,16 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { ThemeProvider } from '@material-ui/core';
-import theme from 'src/theme';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
+import MomentUtils from '@date-io/moment';
+import { ThemeProvider } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Auth from 'src/components/Auth';
 import store from 'src/redux/store';
 import Routes from 'src/Routes';
-import Auth from 'src/components/Auth';
+import theme from 'src/theme';
 
 function App() {
   return (

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { logout, setUserData } from 'src/redux/actions/accountActions';
 import authService from 'src/services/authService';
-import { setUserData, logout } from 'src/redux/actions/accountActions';
+
 import LoadingScreen from './LoadingScreen';
 
 function Auth({ children }) {

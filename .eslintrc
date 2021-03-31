@@ -9,6 +9,7 @@
     "airbnb",
     "airbnb/hooks"
   ],
+  "plugins": ["import"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -37,6 +38,27 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/control-has-associated-label": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/order": ["error", {
+      "groups": ["builtin", "external", "internal"],
+      "pathGroups": [
+        {
+          "pattern": "react+(|-dom)",
+          "group": "external",
+          "position": "before"
+        },
+      {
+        "pattern": "src/**",
+    "group": "internal",
+    "position": "after"
+      }
+      ],
+      "pathGroupsExcludedImportTypes": ["react"],
+      "newlines-between": "always",
+      "alphabetize": {
+        "order": "asc",
+        "caseInsensitive": true
+      }
+    }]
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Container,
   makeStyles,
@@ -10,9 +11,11 @@ import {
   Box,
   Button
 } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
-import Page from 'src/components/Page';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { useHistory } from 'react-router-dom';
+
+import Page from 'src/components/Page';
+
 import RegisterForm from './RegisterForm';
 
 const useStyles = makeStyles(() => ({

@@ -1,14 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import {
-  makeStyles,
-  Typography,
   Card,
+  CardActionArea,
   CardContent,
   CardMedia,
-  CardActionArea
+  makeStyles,
+  Typography
 } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({

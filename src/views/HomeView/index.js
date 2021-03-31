@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   CardMedia,
   Container,
@@ -9,6 +10,7 @@ import {
   Card,
   Box
 } from '@material-ui/core';
+
 import MovieCard from 'src/components/MovieCard';
 
 const useStyles = makeStyles((theme) => ({

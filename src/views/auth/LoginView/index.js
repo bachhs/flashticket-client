@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Container,
   makeStyles,
@@ -8,9 +9,10 @@ import {
   Link,
   Box,
 } from '@material-ui/core';
-import Page from 'src/components/Page';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import { useHistory } from 'react-router-dom';
+
+import Page from 'src/components/Page';
 
 import LoginForm from './LoginForm';
 

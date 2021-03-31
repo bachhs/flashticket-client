@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+
 import axios from 'src/utils/axios';
 
 class AuthService {

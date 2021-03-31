@@ -1,7 +1,9 @@
 import React, { lazy, Suspense } from 'react';
+
 import { Redirect, Route, Switch } from 'react-router-dom';
-import MainLayout from 'src/layout/MainLayout';
+
 import LoadingScreen from 'src/components/LoadingScreen';
+import MainLayout from 'src/layout/MainLayout';
 
 function Routes() {
   return (

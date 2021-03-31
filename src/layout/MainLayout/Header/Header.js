@@ -1,7 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
+
 import {
   makeStyles,
   Toolbar,
@@ -12,7 +10,10 @@ import {
   ListItem,
   Typography
 } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
 import Menu from '@material-ui/icons/Menu';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Account from './Account';

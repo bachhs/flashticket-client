@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+
 import {
   makeStyles,
   Button,
@@ -14,9 +13,12 @@ import {
   FormLabel,
   RadioGroup
 } from '@material-ui/core';
-import { Formik } from 'formik';
-import { KeyboardDatePicker } from '@material-ui/pickers';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { KeyboardDatePicker } from '@material-ui/pickers';
+import { Formik } from 'formik';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { register } from 'src/redux/actions/accountActions';
 
 const useStyles = makeStyles(() => ({
