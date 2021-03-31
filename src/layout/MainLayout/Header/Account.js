@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -8,10 +8,19 @@ import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { logout } from 'src/redux/actions/accountActions';
 
 function Account() {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const dispatch = useDispatch();
+  const account = useSelector((state) => state.account);
+
+  const history = useHistory();
+
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -32,14 +41,18 @@ function Account() {
     }
   }
 
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
 
     prevOpen.current = open;
   }, [open]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div>
@@ -67,11 +80,18 @@ function Account() {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                </MenuList>
+                {account.user ? (
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </MenuList>
+                ) : (
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                    <MenuItem onClick={() => history.push('/login')}>Login</MenuItem>
+                    <MenuItem onClick={() => history.push('/register')}>Register</MenuItem>
+                  </MenuList>
+                )}
               </ClickAwayListener>
             </Paper>
           </Grow>

@@ -51,7 +51,7 @@ function MovieCard({ movie }) {
     <Link to="" style={{ textDecoration: 'none' }}>
       <Card className={classes.card}>
         <CardActionArea>
-          {!movie.poster ? (
+          {!(movie && movie.poster) ? (
             <Skeleton animation="wave" variant="rect" className={classes.media} />
           ) : (
             <CardMedia
@@ -62,7 +62,7 @@ function MovieCard({ movie }) {
           )}
           <CardContent>
             <Typography variant="h5" gutterBottom>
-              {!movie.title ? <Skeleton /> : movie.title}
+              {!(movie && movie.title) ? <Skeleton /> : movie.title}
             </Typography>
           </CardContent>
         </CardActionArea>

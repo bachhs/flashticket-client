@@ -134,13 +134,11 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     paddingLeft: 10
   },
-  accountIcon: {
-    color: 'white',
-    marginRight: 60,
+  account: {
     [theme.breakpoints.down('md')]: {
       position: 'absolute',
-      right: 0,
-      top: 0
+      right: 50,
+      top: 9,
     },
   }
 }));
@@ -185,7 +183,9 @@ function Header({ fixed, absolute }) {
             </ListItem>
           </List>
         </Hidden>
-        <Account />
+        <div className={classes.account}>
+          <Account />
+        </div>
         <Hidden lgUp>
           <IconButton
             aria-label="open drawer"

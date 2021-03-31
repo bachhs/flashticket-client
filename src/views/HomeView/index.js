@@ -11,11 +11,10 @@ import {
   Box
 } from '@material-ui/core';
 
-import MovieCard from 'src/components/MovieCard';
+import Carousel from 'src/components/Carousel';
+import MovieBanner from 'src/components/MovieBanner';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-  },
   mbody: {
     marginRight: theme.spacing(2)
   },
@@ -43,17 +42,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.1rem',
     color: '#ddd',
   },
-  slideFake: {
-    backgroundImage: `url(${'/static/images/poster/poster0.jpg'})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '85% 15%'
-  },
-  gFake: {
-    height: '85vh',
-    background:
-    'linear-gradient(to right, rgba(0,0,0,.49) 55%, transparent 100%)'
-  },
   Title: {
     paddingLeft: 30,
     color: 'white',
@@ -68,7 +56,15 @@ const useStyles = makeStyles((theme) => ({
 function HomeView() {
   const classes = useStyles();
 
-  const movie = [
+  const placeHolder = [
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 }
+  ];
+
+  const dump = [
     {
       poster: 'https://kinhtechungkhoan.vn/stores/news_dataimages/xuanhoang/032020/06/16/2306_1_a_nha_5.jpg',
       title: 'MU VS MC'
@@ -80,137 +76,56 @@ function HomeView() {
     {
       poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
       title: 'Justice League'
+    },
+    {
+      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+      title: 'Justice League'
+    },
+    {
+      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+      title: 'Justice League'
+    },
+    {
+      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+      title: 'Justice League'
     }
   ];
+
   return (
-    <div className={classes.root}>
-      {/* Movie Banner */}
-      <div className={classes.slideFake}>
-        <div className={classes.gFake} />
-      </div>
-      {/* End Movie Banner */}
+    <>
+      <MovieBanner />
+
       <div className={classes.mbody}>
-        <Box height={120} />
         <Grid>
           <Typography className={classes.Title}>
             Sports
           </Typography>
-          <Container maxWidth="xl">
-            <Grid container>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[0]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[0]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[0]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[0]} />
-              </Grid>
-            </Grid>
-          </Container>
+          <Carousel items={dump} />
         </Grid>
-        <Box height={10} />
       </div>
+
       <div className={classes.mbody}>
         <Grid>
           <Typography className={classes.Title}>
             Concerts
           </Typography>
-          <Container maxWidth="xl">
-            <Grid container>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[1]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[1]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[1]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[1]} />
-              </Grid>
-            </Grid>
-          </Container>
+          <Carousel items={placeHolder} />
         </Grid>
         <Box height={10} />
       </div>
+
       <div className={classes.mbody}>
         <Grid>
           <Typography className={classes.Title}>
-            Hot Cinemas
+            Movies
           </Typography>
-          <Container maxWidth="xl">
-            <Grid container>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[2]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[2]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[2]} />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={3}
-              >
-                <MovieCard movie={movie[2]} />
-              </Grid>
-            </Grid>
-          </Container>
+          <Carousel items={placeHolder} />
         </Grid>
         <Box height={10} />
       </div>
+
       {/* Best Seller */}
+
       <div className={classes.mbody}>
         <Grid>
           <Typography className={classes.Title}>
@@ -317,7 +232,7 @@ function HomeView() {
         </Container>
       </div>
       {/* End BestSeller */}
-    </div>
+    </>
   );
 }
 
