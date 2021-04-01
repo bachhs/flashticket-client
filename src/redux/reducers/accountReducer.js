@@ -2,14 +2,14 @@
 import produce from 'immer';
 
 import {
+  LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE,
   LOGOUT,
-  SILENT_LOGIN,
-  UPDATE_PROFILE,
   REGISTER_FAILURE,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  SILENT_LOGIN,
+  UPDATE_PROFILE
 } from 'src/redux/actions/accountActions';
 
 const initialState = {

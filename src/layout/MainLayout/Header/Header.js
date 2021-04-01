@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {
-  makeStyles,
-  Toolbar,
-  IconButton,
-  Hidden,
   Drawer,
+  Hidden,
+  IconButton,
   List,
   ListItem,
-  Typography
+  Toolbar,
+  Typography,
+  makeStyles
 } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Menu from '@material-ui/icons/Menu';

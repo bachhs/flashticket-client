@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {
-  Container,
-  makeStyles,
-  Typography,
+  Box,
   Card,
   CardContent,
+  Container,
   Link,
-  Box,
+  Typography,
+  makeStyles,
 } from '@material-ui/core';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import { useHistory } from 'react-router-dom';
