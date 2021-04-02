@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { makeStyles, Typography } from '@material-ui/core';
+import {
+  makeStyles, Typography, Grid, Button
+} from '@material-ui/core';
+import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,13 +63,20 @@ const useStyles = makeStyles((theme) => ({
   duration: {
     display: 'inline-block',
     marginTop: theme.spacing(0.7),
-    padding: theme.spacing(0.8),
+    padding: theme.spacing(1.05),
     border: '1px solid rgba(255,255,255,0.13)'
   },
   genre: {
     display: 'inline-block',
     color: '#cee4fd',
-    marginLeft: theme.spacing(2)
+    padding: theme.spacing(0.52),
+    fontSize: 15
+  },
+  btLearn: {
+    border: '1px solid rgba(255,255,255,0.13)',
+    borderRadius: 0,
+    marginLeft: 15,
+    fontSize: 11
   },
   [theme.breakpoints.down('sm')]: {
     blurRoot: {
@@ -73,17 +84,26 @@ const useStyles = makeStyles((theme) => ({
         'linear-gradient(to right, rgba(0,0,0,.8) 50%, transparent 100%)'
     },
     movieName: {
-      maxWidth: '90%'
-    },
-    movieTitle: {
-      maxWidth: '100%',
-      fontSize: '16px'
+      maxWidth: '90%',
+      fontSize: '18px'
     },
     descriptionText: {
       maxWidth: '100%',
       fontSize: '12px'
     },
     movieActions: { display: 'flex', width: '100%' },
+    cast: {
+      maxWidth: '90%'
+    },
+    director: {
+      fontSize: '15px'
+    },
+    stars: {
+      fontSize: '15px'
+    },
+    genre: {
+      fontSize: 12
+    }
   }
 }));
 
@@ -103,6 +123,12 @@ function MovieBanner() {
             Justice League: Zack Snyder
           </Typography>
           <Typography
+            className={classes.genre}
+            variant="caption"
+          >
+            Action, Adventure, Fantasy
+          </Typography>
+          <Typography
             className={classes.descriptionText}
             variant="body2"
             color="inherit"
@@ -117,32 +143,33 @@ function MovieBanner() {
             variant="body1"
             color="secondary"
           >
-            Opening day    23/6/2021
+            Opening day 23/6/2021
           </Typography>
-          <div className={classes.cast}>
-            <Typography
-              className={classes.director}
-              variant="subtitle1"
-              color="primary"
-            >
-              Director: Zack Snyder
-            </Typography>
-            <Typography
-              className={classes.director}
-              variant="subtitle1"
-              color="primary"
-              style={{ paddingLeft: 10, paddingRight: 10 }}
-            >
-              |
-            </Typography>
-            <Typography
-              className={classes.stars}
-              variant="body1"
-              color="primary"
-            >
-              Star:  Henry Cavill, Gal Gadot
-            </Typography>
-          </div>
+          <Grid
+            container
+            alignItems="center"
+            className={classes.cast}
+          >
+            <Grid item>
+              <Typography
+                className={classes.director}
+                variant="subtitle1"
+                color="primary"
+                style={{ paddingRight: 20 }}
+              >
+                Director: Zack Snyder
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                className={classes.stars}
+                variant="body1"
+                color="primary"
+              >
+                Star:  Henry Cavill, Gal Gadot
+              </Typography>
+            </Grid>
+          </Grid>
           <Typography
             className={classes.duration}
             variant="caption"
@@ -152,11 +179,18 @@ function MovieBanner() {
             min
           </Typography>
           <Typography
-            className={classes.genre}
+            className={classes.duration}
             variant="caption"
+            style={{ marginLeft: 15 }}
           >
-            Action, Adventure, Fantasy
+            C13
           </Typography>
+          <Link to="" style={{ textDecoration: 'none' }}>
+            <Button className={classes.btLearn}>
+              Learn More
+              <ArrowRightAlt style={{ marginLeft: 8 }} />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

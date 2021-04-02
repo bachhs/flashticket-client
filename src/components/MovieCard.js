@@ -16,31 +16,14 @@ const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 400,
     backgroundColor: 'transparent',
+    color: theme.palette.common.white,
     boxShadow: 'unset',
-    color: theme.palette.common.dark,
-    display: 'flex',
-    flex: ' 0 0 auto',
-    flexDirection: 'column',
-    height: 400,
-    margin: '60px 30px'
+    marginRight: '15px',
+    marginLeft: '15px',
+    marginTop: '10px'
   },
   media: {
     height: 300
-  },
-  header: {
-    backgroundColor: '#7fc7d9',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    height: '80%',
-    padding: '5px 10px',
-    width: '100%',
-    color: theme.palette.common.white
-  },
-  body: {
-    height: '20%',
-    color: theme.palette.common.white,
-    padding: '15px',
-    whiteSpace: 'normal'
   }
 }));
 

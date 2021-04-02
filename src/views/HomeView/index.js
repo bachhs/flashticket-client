@@ -95,35 +95,42 @@ function HomeView() {
     <>
       <MovieBanner />
 
+      <Box height={70} />
       <div className={classes.mbody}>
         <Grid>
           <Typography className={classes.Title}>
             Sports
           </Typography>
+          <Box height={40} />
           <Carousel items={dump} />
         </Grid>
       </div>
+
+      <Box height={70} />
 
       <div className={classes.mbody}>
         <Grid>
           <Typography className={classes.Title}>
             Concerts
           </Typography>
+          <Box height={40} />
           <Carousel items={placeHolder} />
         </Grid>
-        <Box height={10} />
       </div>
+
+      <Box height={50} />
 
       <div className={classes.mbody}>
         <Grid>
           <Typography className={classes.Title}>
             Movies
           </Typography>
+          <Box height={40} />
           <Carousel items={placeHolder} />
         </Grid>
-        <Box height={10} />
       </div>
 
+      <Box height={50} />
       {/* Best Seller */}
 
       <div className={classes.mbody}>
@@ -132,7 +139,7 @@ function HomeView() {
             Best Seller
           </Typography>
         </Grid>
-        <Box height={10} />
+        <Box height={50} />
         <Container maxWidth="xl">
           <Grid container>
             <Grid
