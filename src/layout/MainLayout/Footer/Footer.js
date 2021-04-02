@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {
-  Divider, Typography, Link, makeStyles, Grid, List, ListItem, IconButton
+  Divider, Grid, IconButton,
+  Link, List, ListItem, Typography, makeStyles
 } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';

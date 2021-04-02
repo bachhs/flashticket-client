@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {
+  Box,
+  Card,
+  CardContent,
   CardMedia,
   Container,
   Grid,
-  makeStyles,
   Typography,
-  CardContent,
-  Card,
-  Box
+  makeStyles
 } from '@material-ui/core';
 
 import Carousel from 'src/components/Carousel';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  makeStyles, Typography, Grid, Button
+  Button, Grid, Typography, makeStyles
 } from '@material-ui/core';
 import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import { Link } from 'react-router-dom';

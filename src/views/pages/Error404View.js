@@ -5,9 +5,9 @@ import {
   Button,
   Container,
   Typography,
-  useTheme,
+  makeStyles,
   useMediaQuery,
-  makeStyles
+  useTheme
 } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 

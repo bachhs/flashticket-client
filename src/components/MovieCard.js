@@ -5,8 +5,8 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
-  makeStyles,
-  Typography
+  Typography,
+  makeStyles
 } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import PropTypes from 'prop-types';
