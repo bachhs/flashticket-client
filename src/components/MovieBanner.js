@@ -72,6 +72,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0.52),
     fontSize: 15
   },
+  span: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
+  },
   btLearn: {
     border: '1px solid rgba(255,255,255,0.13)',
     borderRadius: 0,
@@ -158,6 +163,16 @@ function MovieBanner() {
                 style={{ paddingRight: 20 }}
               >
                 Director: Zack Snyder
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                className={classes.span}
+                variant="subtitle1"
+                color="primary"
+                style={{ paddingRight: 20 }}
+              >
+                |
               </Typography>
             </Grid>
             <Grid item>
