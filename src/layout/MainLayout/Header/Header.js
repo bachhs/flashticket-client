@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
+  // eslint-disable-next-line no-unused-vars
+  Avatar,
   Drawer,
   Hidden,
   IconButton,
@@ -57,8 +59,11 @@ const useStyles = makeStyles((theme) => ({
   flex: {
     flex: 1
   },
+  logoImage: {
+    marginRight: '8px'
+  },
   logoLink: {
-    display: 'inline-block',
+    display: 'flex',
     paddingTop: '.15rem',
     paddingBottom: '.15rem',
     marginRight: '20px',
@@ -140,24 +145,37 @@ const useStyles = makeStyles((theme) => ({
       right: 50,
       top: 9,
     },
-  }
+  },
+  logoImageSpin: {
+    animation: '$spinMe 3s forwards'
+  },
+  '@keyframes spinMe': {
+    to: {
+      transform: 'rotate(6turn)'
+    }
+  },
 }));
 
 function Header({ fixed, absolute }) {
   const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   const appBarClasses = classNames({
     [classes.appBar]: true,
     [classes.absolute]: absolute,
     [classes.fixed]: fixed
   });
+
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
         <Link className={classes.logoLink} to="/">
+          <Avatar className={classes.logoImageSpin} alt="Flash Ticket" src="https://cdn.iconscout.com/icon/free/png-256/ticket-1855957-1574163.png" />
           <Typography className={classes.logo} variant="h2">
             FlashTicket
           </Typography>
@@ -165,19 +183,19 @@ function Header({ fixed, absolute }) {
         <Hidden mdDown implementation="css">
           <List className={classes.list}>
             <ListItem className={classes.listItem}>
-              <Link className={classes.navLink}>
+              <Link to="/" className={classes.navLink}>
                 Home
               </Link>
-              <Link className={classes.navLink}>
+              <Link to="/" className={classes.navLink}>
                 Concerts
               </Link>
-              <Link className={classes.navLink}>
+              <Link to="/" className={classes.navLink}>
                 Sports
               </Link>
-              <Link className={classes.navLink}>
+              <Link to="/" className={classes.navLink}>
                 Cinemas
               </Link>
-              <Link className={classes.navLink}>
+              <Link to="/" className={classes.navLink}>
                 Others
               </Link>
             </ListItem>
@@ -207,23 +225,23 @@ function Header({ fixed, absolute }) {
           onClose={handleDrawerToggle}
         >
           <div className={classes.appResponsive}>
-            <Link className={classes.navRe}>
+            <Link to="/" className={classes.navRe}>
               Home
             </Link>
             <br />
-            <Link className={classes.navRe}>
+            <Link to="/" className={classes.navRe}>
               Concerts
             </Link>
             <br />
-            <Link className={classes.navRe}>
+            <Link to="/" className={classes.navRe}>
               Sports
             </Link>
             <br />
-            <Link className={classes.navRe}>
+            <Link to="/" className={classes.navRe}>
               Cinemas
             </Link>
             <br />
-            <Link className={classes.navRe}>
+            <Link to="/" className={classes.navRe}>
               Others
             </Link>
           </div>

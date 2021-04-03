@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
   Box,
@@ -13,6 +14,8 @@ import {
 
 import Carousel from 'src/components/Carousel';
 import MovieBanner from 'src/components/MovieBanner';
+import useIsMountedRef from 'src/hooks/useIsMountedRef';
+import axios from 'src/utils/axios';
 
 const useStyles = makeStyles((theme) => ({
   mbody: {
@@ -56,40 +59,32 @@ const useStyles = makeStyles((theme) => ({
 function HomeView() {
   const classes = useStyles();
 
-  const placeHolder = [
+  const isMountedRef = useIsMountedRef();
+
+  const [movies, setMovies] = useState([
     { id: 1 },
     { id: 2 },
     { id: 3 },
     { id: 4 },
     { id: 5 }
-  ];
+  ]);
 
-  const dump = [
-    {
-      poster: 'https://kinhtechungkhoan.vn/stores/news_dataimages/xuanhoang/032020/06/16/2306_1_a_nha_5.jpg',
-      title: 'MU VS MC'
-    },
-    {
-      poster: 'https://i.ytimg.com/vi/ldrw7ocvQWk/maxresdefault.jpg',
-      title: 'Truyện Ngắn'
-    },
-    {
-      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
-      title: 'Justice League'
-    },
-    {
-      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
-      title: 'Justice League'
-    },
-    {
-      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
-      title: 'Justice League'
-    },
-    {
-      poster: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
-      title: 'Justice League'
-    }
-  ];
+  const getMovies = useCallback(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/movies?sort=createdDate,desc&size=6`)
+      .then((response) => {
+        if (response && response.data) {
+          setMovies(response.data._embedded.movies);
+        }
+      })
+      .catch(() => {
+
+      });
+  }, [isMountedRef]);
+
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
 
   return (
     <>
@@ -102,7 +97,7 @@ function HomeView() {
             Sports
           </Typography>
           <Box height={40} />
-          <Carousel items={dump} />
+          <Carousel items={movies} />
         </Grid>
       </div>
 
@@ -114,7 +109,7 @@ function HomeView() {
             Concerts
           </Typography>
           <Box height={40} />
-          <Carousel items={placeHolder} />
+          <Carousel items={movies} />
         </Grid>
       </div>
 
@@ -126,7 +121,7 @@ function HomeView() {
             Movies
           </Typography>
           <Box height={40} />
-          <Carousel items={placeHolder} />
+          <Carousel items={movies} />
         </Grid>
       </div>
 

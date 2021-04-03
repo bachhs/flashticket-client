@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 
 import {
@@ -31,7 +32,7 @@ function MovieCard({ movie }) {
   const classes = useStyles();
 
   return (
-    <Link to="" style={{ textDecoration: 'none' }}>
+    <Link to={(movie && movie._links) ? movie._links.self.href.replace(process.env.REACT_APP_API, '') : ''} style={{ textDecoration: 'none' }}>
       <Card className={classes.card}>
         <CardActionArea>
           {!(movie && movie.poster) ? (

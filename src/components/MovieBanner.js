@@ -37,11 +37,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     right: 0
   },
-  movieInfo: {
-    position: 'relative',
-    padding: theme.spacing(3),
-    maxWidth: '44%'
-  },
   movieName: {
     maxWidth: '44%',
     fontSize: '32px',
@@ -123,7 +118,7 @@ function MovieBanner() {
       }}
     >
       <div className={classes.blurRoot}>
-        <div movieInfo>
+        <div>
           <Typography className={classes.movieName} variant="h5" color="inherit">
             Justice League: Zack Snyder
           </Typography>

@@ -70,7 +70,7 @@ function Carousel({ items }) {
   const classes = useStyles();
   const settings = {
     centerMode: true,
-    infinite: true,
+    infinite: items.length > 4,
     speed: 500,
     slidesToShow: 4,
     swipeToSlide: true,
