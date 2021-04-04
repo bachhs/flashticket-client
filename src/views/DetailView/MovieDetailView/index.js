@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import {
-  makeStyles
-} from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
 import MovieDetail from 'src/components/MovieDetail';
-
-const useStyles = makeStyles(() => ({
-  root: {}
-}));
+import useIsMountedRef from 'src/hooks/useIsMountedRef';
+import axios from 'src/utils/axios';
 
 function MovieDetailView() {
-  const classes = useStyles();
+  const isMountedRef = useIsMountedRef();
+  const { id } = useParams();
+
+  const [movie, setMovie] = useState();
+
+  const getMovie = useCallback(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/movies/${id}`)
+      .then((response) => {
+        if (response && response.data) {
+          setMovie(response.data);
+        }
+      })
+      .catch(() => {
+
+      });
+  }, [isMountedRef]);
+
+  useEffect(() => {
+    getMovie();
+  }, [getMovie]);
+
   return (
-    <>
-      <div className={classes.root} />
-      <MovieDetail />
-    </>
+    <MovieDetail movie={movie} />
   );
 }
 

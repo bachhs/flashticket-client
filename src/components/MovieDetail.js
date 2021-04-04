@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import {
@@ -8,6 +9,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import Skeleton from '@material-ui/lab/Skeleton';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,11 +43,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     right: 0
   },
-  movieInfo: {
-    position: 'relative',
-    padding: theme.spacing(3),
-    maxWidth: '44%'
-  },
   movieName: {
     maxWidth: '60%',
     fontSize: '32px',
@@ -57,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '44%'
   },
   duration: {
+    display: 'flex',
     marginLeft: theme.spacing(2),
     padding: theme.spacing(0.5),
     border: '1px solid rgba(255,255,255,0.13)'
@@ -151,18 +150,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function MovieDetail() {
+function MovieDetail({ movie }) {
   const classes = useStyles();
 
   return (
     <div
       className={classes.root}
       style={{
-        backgroundImage: `url(${'/static/images/poster/poster0.jpg'})`
+        backgroundImage: `url(${movie ? movie.poster : null})`
       }}
     >
       <div className={classes.blurRoot}>
-        <div movieInfo>
+        <div>
           <Box
             className={classes.boxGenre}
             display="flex"
@@ -199,7 +198,8 @@ function MovieDetail() {
             variant="h5"
             color="inherit"
           >
-            Justice League: Zack Snyder
+
+            {!(movie && movie.title) ? <Skeleton /> : movie.title}
             <Typography
               className={classes.classify}
               variant="caption"
@@ -219,16 +219,16 @@ function MovieDetail() {
               variant="body1"
               color="secondary"
             >
-              Opening day 23/6/2021
+              {!(movie && movie.openingDay)
+                ? <Skeleton width={60} height={30} />
+                : movie.openingDay}
             </Typography>
 
             <Typography
               className={classes.duration}
               variant="caption"
             >
-              242
-              {' '}
-              min
+              {!(movie && movie.duration) ? <Skeleton width={60} height={20} /> : `${movie.duration} min`}
             </Typography>
           </Grid>
           <Typography
@@ -236,10 +236,7 @@ function MovieDetail() {
             variant="body2"
             color="inherit"
           >
-            Determined to ensure Superman ultimate sacrifice was not in vain,
-            Bruce Wayne aligns forces with Diana Prince with plans
-            to recruit a team of metahumans to protect the world
-            from an approaching threat of catastrophic proportions.
+            {!(movie && movie.description) ? <Skeleton variant="rect" width={500} height={118} /> : movie.description}
           </Typography>
 
           <Typography
@@ -279,5 +276,9 @@ function MovieDetail() {
     </div>
   );
 }
+
+MovieDetail.propTypes = {
+  movie: PropTypes.object
+};
 
 export default MovieDetail;
