@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import {
@@ -52,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
   descriptionText: {
     color: '#cfd6e1',
     padding: theme.spacing(1.5, 0),
-    maxWidth: '44%'
   },
   duration: {
     display: 'flex',
@@ -233,10 +231,14 @@ function MovieDetail({ movie }) {
           </Grid>
           <Typography
             className={classes.descriptionText}
-            variant="body2"
-            color="inherit"
+            variant="subtitle1"
+            color="primary"
+            paragraph
+            style={{ paddingRight: 20, maxWidth: '35%' }}
           >
-            {!(movie && movie.description) ? <Skeleton variant="rect" width={500} height={118} /> : movie.description}
+            {!(movie && movie.description)
+              ? <Skeleton variant="rect" height={60} />
+              : movie.description}
           </Typography>
 
           <Typography
@@ -245,7 +247,9 @@ function MovieDetail({ movie }) {
             color="primary"
             style={{ paddingRight: 20 }}
           >
-            Director: Zack Snyder
+            {!(movie && movie.directors)
+              ? <Skeleton variant="rect" style={{ maxWidth: '10%' }} />
+              : (`Directors${movie.directors}`)}
           </Typography>
 
           <Typography
