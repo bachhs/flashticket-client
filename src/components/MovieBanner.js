@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '100%',
     height: '85vh',
+    minHeight: '640px',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '85% 15%',
