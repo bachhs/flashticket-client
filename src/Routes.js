@@ -37,7 +37,12 @@ function Routes() {
                 <Route
                   exact
                   path="/sport"
-                  component={lazy(() => import('src/views/DetailView/SportsDetailView'))}
+                  component={lazy(() => import('src/views/DetailView/SportDetailView'))}
+                />
+                <Route
+                  exact
+                  path="/concert"
+                  component={lazy(() => import('src/views/DetailView/ConcertDetailView'))}
                 />
                 <Route
                   exact

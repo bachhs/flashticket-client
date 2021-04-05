@@ -32,17 +32,6 @@ const useStyles = makeStyles((theme) => ({
         'linear-gradient(to right, rgba(0,0,0,.9) 32%, transparent 100%)',
     zIndex: 2
   },
-  movieImg: {
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '85% 15%',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    zIndex: 1,
-    top: 0,
-    right: 0
-  },
   movieName: {
     maxWidth: '60%',
     fontSize: '32px',
@@ -100,6 +89,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
     backgroundColor: '#ffffff40'
   },
+  skeleton: {
+    width: '400px'
+  },
   [theme.breakpoints.down('sm')]: {
     blurRoot: {
       background:
@@ -145,7 +137,11 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 12,
       padding: '9.5px 40px',
       fontSize: 12,
-    }
+    },
+    skeleton: {
+      width: '75vw',
+      maxWidth: '340px'
+    },
   }
 }));
 
@@ -198,7 +194,7 @@ function MovieDetail({ movie }) {
             color="inherit"
           >
 
-            {!(movie && movie.title) ? <Skeleton /> : movie.title}
+            {!(movie && movie.title) ? <Skeleton className={classes.skeleton} /> : movie.title}
             <Typography
               className={classes.classify}
               variant="caption"
@@ -238,7 +234,7 @@ function MovieDetail({ movie }) {
             style={{ paddingRight: 20, maxWidth: '35%' }}
           >
             {!(movie && movie.description)
-              ? <Skeleton variant="rect" height={60} />
+              ? <Skeleton variant="rect" className={classes.skeleton} height={80} />
               : movie.description}
           </Typography>
 
@@ -249,7 +245,7 @@ function MovieDetail({ movie }) {
             style={{ paddingRight: 20 }}
           >
             {!(movie && movie.directors)
-              ? <Skeleton variant="rect" style={{ maxWidth: '10%' }} />
+              ? <Skeleton variant="rect" style={{ maxWidth: '30%' }} />
               : (`Directors${movie.directors}`)}
           </Typography>
 

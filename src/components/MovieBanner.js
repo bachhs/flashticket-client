@@ -27,17 +27,6 @@ const useStyles = makeStyles((theme) => ({
         'linear-gradient(to right, rgba(0,0,0,.8) 30%, transparent 100%)',
     zIndex: 2
   },
-  movieImg: {
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '85% 15%',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    zIndex: 1,
-    top: 0,
-    right: 0
-  },
   movieName: {
     maxWidth: '44%',
     fontSize: '32px',
