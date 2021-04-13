@@ -1,6 +1,26 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '*::-webkit-scrollbar': {
+          width: '0.6em',
+          color: 'transparent'
+        },
+        '*::-webkit-scrollbar-thumb': {
+          borderRadius: '8px',
+          border: '4px solid transparent',
+          backgroundColor: '#909090',
+        },
+        '*::-webkit-scrollbar-thumb:active': {
+          borderRadius: '8px',
+          border: '4px solid transparent',
+          backgroundColor: '#cccccc',
+        }
+      }
+    }
+  },
   palette: {
     type: 'dark',
     background: {

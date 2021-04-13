@@ -49,6 +49,7 @@ function Routes() {
                   path="/"
                   component={lazy(() => import('src/views/HomeView'))}
                 />
+                <Redirect to="/404" />
               </Switch>
             </MainLayout>
           )}

@@ -246,7 +246,7 @@ function MovieDetail({ movie }) {
           >
             {!(movie && movie.directors)
               ? <Skeleton variant="rect" style={{ maxWidth: '30%' }} />
-              : (`Directors${movie.directors}`)}
+              : (`Directors${movie.directors[0].fullname}`)}
           </Typography>
 
           <Typography
