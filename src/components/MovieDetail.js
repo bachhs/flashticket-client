@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Box,
   Button,
+  Dialog,
   Grid,
   Typography,
   makeStyles
@@ -148,6 +149,8 @@ const useStyles = makeStyles((theme) => ({
 function MovieDetail({ movie }) {
   const classes = useStyles();
 
+  const [trailerDialogOpen, setTrailerDialogOpen] = useState(false);
+
   return (
     <div
       className={classes.root}
@@ -216,7 +219,9 @@ function MovieDetail({ movie }) {
             >
               {!(movie && movie.openingDay)
                 ? <Skeleton width={60} height={30} />
-                : movie.openingDay}
+                : new Date(movie.openingDay).toLocaleDateString('vi-VN', {
+                  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                })}
             </Typography>
 
             <Typography
@@ -244,9 +249,9 @@ function MovieDetail({ movie }) {
             color="primary"
             style={{ paddingRight: 20 }}
           >
-            {!(movie && movie.directors)
+            {!(movie && movie.directors && movie.directors.length > 0)
               ? <Skeleton variant="rect" style={{ maxWidth: '30%' }} />
-              : (`Directors${movie.directors}`)}
+              : (`Directors: ${movie.directors[0].fullname}`)}
           </Typography>
 
           <Typography
@@ -266,14 +271,23 @@ function MovieDetail({ movie }) {
                 <ConfirmationNumberIcon style={{ marginLeft: 8 }} />
               </Button>
             </Link>
-            <Link to="" style={{ textDecoration: 'none' }}>
-              <Button className={classes.btTrailers}>
-                Trailers
-              </Button>
-            </Link>
+            <Button
+              className={classes.btTrailers}
+              onClick={() => {
+                setTrailerDialogOpen(true);
+              }}
+            >
+              Trailers
+            </Button>
           </Grid>
         </div>
       </div>
+      <Dialog
+        open={trailerDialogOpen}
+        onClose={() => { setTrailerDialogOpen(false); }}
+      >
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vM-Bja2Gy04" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+      </Dialog>
     </div>
   );
 }

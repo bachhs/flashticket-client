@@ -9,6 +9,10 @@
 # production
 /build
 
+# docker
+Dockerfile
+.dockerignore
+
 # misc
 .DS_Store
 

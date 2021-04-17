@@ -69,6 +69,14 @@ function HomeView() {
     { id: 5 }
   ]);
 
+  const [sports, setSports] = useState([
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 }
+  ]);
+
   const getMovies = useCallback(() => {
     axios
       .get(`${process.env.REACT_APP_API}/movies?sort=createdDate,desc&size=6`)
@@ -82,9 +90,26 @@ function HomeView() {
       });
   }, [isMountedRef]);
 
+  const getSports = useCallback(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/sports?sort=createdDate,desc&size=6`)
+      .then((response) => {
+        if (response && response.data) {
+          setSports(response.data._embedded.sports);
+        }
+      })
+      .catch(() => {
+
+      });
+  }, [isMountedRef]);
+
   useEffect(() => {
     getMovies();
   }, [getMovies]);
+
+  useEffect(() => {
+    // getSports();
+  }, [getSports]);
 
   return (
     <>
@@ -97,7 +122,7 @@ function HomeView() {
             Sports
           </Typography>
           <Box height={40} />
-          <Carousel items={movies} />
+          <Carousel items={sports} />
         </Grid>
       </div>
 

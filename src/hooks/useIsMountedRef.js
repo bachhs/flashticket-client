@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function useIsMountedRef() {
+const useIsMountedRef = () => {
   const isMounted = useRef(true);
 
   useEffect(() => () => {
@@ -8,4 +8,6 @@ export default function useIsMountedRef() {
   }, []);
 
   return isMounted;
-}
+};
+
+export default useIsMountedRef;
