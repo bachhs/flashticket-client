@@ -46,6 +46,16 @@ function Routes() {
                 />
                 <Route
                   exact
+                  path="/booking"
+                  component={lazy(() => import('src/views/BookingView'))}
+                />
+                <Route
+                  exact
+                  path="/showtime"
+                  component={lazy(() => import('src/views/TimeBooking'))}
+                />
+                <Route
+                  exact
                   path="/"
                   component={lazy(() => import('src/views/HomeView'))}
                 />

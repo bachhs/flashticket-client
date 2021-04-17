@@ -34,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   poster: {
     height: '600px',
-    width: '400px',
-    backgroundColor: 'red'
+    width: '400px'
   },
   posterImg: {
     width: '100%',

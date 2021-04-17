@@ -113,7 +113,8 @@ function SportDetailView() {
         <div className={classes.rootInfo}>
           <Grid
             className={classes.leagueBox}
-            alignItems="flex-end"
+            alignItems="center"
+            direction="column"
             justify="center"
             container
           >
