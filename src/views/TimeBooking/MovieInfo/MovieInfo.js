@@ -8,12 +8,12 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   rootMovie: {
-    paddingTop: theme.spacing(12)
+    paddingTop: theme.spacing(14)
   },
   movieInfos: {
     background: 'rgba(57, 61, 67, 0.5)',
     position: 'relative',
-    height: '87vh',
+    height: '85vh',
   },
   background: {
     position: 'absolute',
@@ -85,6 +85,7 @@ function MovieInfo(props) {
         />
         <Typography className={classes.title}>{movie[1].title}</Typography>
         <div className={classes.info}>
+
           <div className={classes.infoBox}>
             <Typography variant="subtitle1" color="inherit">
               Director

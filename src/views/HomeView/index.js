@@ -17,6 +17,8 @@ import MovieBanner from 'src/components/MovieBanner';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import axios from 'src/utils/axios';
 
+import Footer from './Footer/Footer';
+
 const useStyles = makeStyles((theme) => ({
   mbody: {
     marginRight: theme.spacing(2)
@@ -259,6 +261,7 @@ function HomeView() {
         </Container>
       </div>
       {/* End BestSeller */}
+      <Footer />
     </>
   );
 }

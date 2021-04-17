@@ -1,15 +1,11 @@
 import React from 'react';
 
 import {
-  Box,
-  Card,
-  CardContent,
-  Container,
-  Link,
-  Typography,
-  makeStyles,
+  Grid,
+  IconButton,
+  makeStyles
 } from '@material-ui/core';
-import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
 import Page from 'src/components/Page';
@@ -18,32 +14,55 @@ import LoginForm from './LoginForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    justifyContent: 'center',
-    display: 'flex',
-    minHeight: '100%',
-    paddingBottom: 120,
-    paddingTop: 120,
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: 50
-    },
-    borderRadius: 60
-  },
-  Title: {
-    color: 'black',
-    opacity: 0.85,
-    fontWeight: 'bold',
-    fontSize: 30
+    height: '100vh'
   },
   button: {
     color: '#ffffff',
     opacity: 0.95
   },
-  logo: {
-    fontSize: 130,
-    color: 'black'
-  },
   card: {
     paddingTop: 10
+  },
+  grid: {
+    height: '100%'
+  },
+  bgWrapper: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    }
+  },
+  bg: {
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    opacity: 0.5
+  },
+  content: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  contentHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingTop: theme.spacing(5),
+    paddingBototm: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
+  },
+
+  contentBody: {
+    flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center'
+    }
   }
 }));
 
@@ -55,46 +74,31 @@ function LoginView() {
     history.push('/');
   };
 
+  const handleBack = () => {
+    history.push('/');
+  };
+
   return (
     <Page title="Login" className={classes.root}>
-      <Container maxWidth="sm">
-        <Box
-          mt={1}
-          mb={0.5}
-          display="flex"
-          justifyContent="center"
-        >
-          <AccountCircleRoundedIcon className={classes.logo} />
-        </Box>
-        <Box
-          mt={1}
-          mb={3.5}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Typography className={classes.Title}>
-            Đăng nhập
-          </Typography>
-        </Box>
-        <Card className={classes.card}>
-          <CardContent>
-            <Box>
-              <LoginForm onSubmitSuccess={onSubmitSuccess} />
-            </Box>
-            <Box mt={2}>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-              >
-                <Link href="register">
-                  Bạn chưa có tài khoản?
-                </Link>
-              </Typography>
-            </Box>
-          </CardContent>
-        </Card>
-      </Container>
+      <Grid className={classes.grid} container>
+        <Grid className={classes.bgWrapper} item lg={5}>
+          <div className={classes.bg} />
+        </Grid>
+
+        <Grid className={classes.content} item lg={7} xs={12}>
+          <div className={classes.contentHeader}>
+            <IconButton
+              className={classes.backButton}
+              onClick={handleBack}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+          </div>
+          <div className={classes.contentBody}>
+            <LoginForm onSubmitSuccess={onSubmitSuccess} />
+          </div>
+        </Grid>
+      </Grid>
     </Page>
   );
 }

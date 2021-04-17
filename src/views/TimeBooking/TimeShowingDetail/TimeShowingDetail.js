@@ -10,8 +10,6 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%',
-    paddingTop: theme.spacing(7)
   },
   cinema: {
     borderBottom: '0.6px solid #afadadd4',
@@ -37,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(0)
   },
   divider: {
-    borderBottom: '0.6px solid #bdb7b7'
+    borderBottom: '0.1px solid #bdb7b7'
   }
 }));
 
@@ -164,7 +162,7 @@ function TimeShowingDetail() {
             </Box>
           </Box>
 
-          <Box mt={2} className={classes.cinema1}>
+          <Box mt={2} className={classes.cinema}>
             <Typography className={classes.cinemaName}>
               IFILM Paper Brigde
             </Typography>

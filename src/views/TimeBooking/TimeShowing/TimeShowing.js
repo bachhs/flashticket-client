@@ -14,18 +14,23 @@ import TimeShowingDetail from 'src/views/TimeBooking/TimeShowingDetail/TimeShowi
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    paddingTop: theme.spacing(7)
+    paddingTop: theme.spacing(9)
+  },
+  [theme.breakpoints.down('md')]: {
+    root: {
+      paddingTop: theme.spacing(0)
+    }
   }
 }));
 
 function TimeShowing() {
   const classes = useStyles();
-  const [currentTab, setCurrentTab] = useState('overview');
+  const [currentTab, setCurrentTab] = useState('day1');
   const tabs = [
-    { value: 'overview', label: 'Chủ nhật 11/4' },
-    { value: 'reviews', label: 'Thứ hai 12/4' },
-    { value: 'overview1', label: 'Thứ ba 13/4' },
-    { value: 'reviews2', label: 'Thứ tư 14/4' },
+    { value: 'day1', label: 'Chủ nhật 11/4' },
+    { value: 'day2', label: 'Thứ hai 12/4' },
+    { value: 'day3', label: 'Thứ ba 13/4' },
+    { value: 'day4', label: 'Thứ tư 14/4' },
   ];
 
   const handleTabsChange = (event, value) => {
@@ -53,11 +58,11 @@ function TimeShowing() {
           </Tabs>
         </Box>
         <Divider />
-        <Box mt={3}>
-          {currentTab === 'overview' }
-          {currentTab === 'reviews' }
-          {currentTab === 'overview1' }
-          {currentTab === 'reviews1' }
+        <Box mt={1}>
+          {currentTab === 'day1' }
+          {currentTab === 'day2' }
+          {currentTab === 'day3' }
+          {currentTab === 'day4' }
         </Box>
         <TimeShowingDetail />
       </Container>

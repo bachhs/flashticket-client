@@ -3,18 +3,37 @@ import React from 'react';
 import {
   Box,
   Button,
-  Divider,
+  Link,
   TextField,
-  makeStyles,
+  Typography,
+  makeStyles
 } from '@material-ui/core';
+import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import { login } from 'src/redux/actions/accountActions';
 
-const useStyles = makeStyles(() => ({
-  root: {
+const useStyles = makeStyles((theme) => ({
+  form: {
+    paddingLeft: '100px',
+    paddingRight: '100px',
+    paddingBottom: '125px',
+    flexBasis: '700px',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }
+  },
+  logo: {
+    fontSize: 130,
+    color: '#cecccc'
+  },
+  Title: {
+    color: 'white',
+    fontWeight: '330',
+    fontSize: 35
   }
 }));
 
@@ -74,8 +93,26 @@ function LoginForm({ onSubmitSuccess, onSubmitFail }) {
       }) => (
         <form
           onSubmit={handleSubmit}
-          className={classes.root}
+          className={classes.form}
         >
+          <Box
+            mt={1}
+            display="flex"
+            justifyContent="center"
+          >
+            <AccountCircleRoundedIcon className={classes.logo} />
+          </Box>
+          <Box
+            mt={1}
+            mb={1.5}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Typography className={classes.Title}>
+              Đăng nhập
+            </Typography>
+          </Box>
           <TextField
             name="email"
             type="email"
@@ -103,9 +140,7 @@ function LoginForm({ onSubmitSuccess, onSubmitFail }) {
             variant="outlined"
             autoComplete="current-password"
           />
-          <Box my={2}>
-            <Divider />
-          </Box>
+          <Box my={2} />
           <Button
             type="submit"
             variant="contained"
@@ -115,6 +150,16 @@ function LoginForm({ onSubmitSuccess, onSubmitFail }) {
           >
             Đăng nhập
           </Button>
+          <Box mt={2}>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+            >
+              <Link href="register">
+                Bạn chưa có tài khoản?
+              </Link>
+            </Typography>
+          </Box>
         </form>
       )}
     </Formik>

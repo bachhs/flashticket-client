@@ -1,33 +1,62 @@
 import React from 'react';
 
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  Divider,
-  Link,
-  Typography,
+  Grid,
+  IconButton,
   makeStyles
 } from '@material-ui/core';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
 import Page from 'src/components/Page';
 
 import RegisterForm from './RegisterForm';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    justifyContent: 'center',
-    display: 'flex',
-    minHeight: '100%',
-    paddingBottom: 120,
-    paddingTop: 80
+    height: '100vh'
   },
-  button: {
-    opacity: 0.95
+  grid: {
+    height: '100%'
+  },
+  bgWrapper: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    }
+  },
+  bg: {
+    backgroundColor: theme.palette.common.neutral,
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    opacity: 0.5
+  },
+  content: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  contentHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingTop: theme.spacing(5),
+    paddingBototm: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
+  },
+
+  contentBody: {
+    flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center'
+    }
   }
 }));
 
@@ -40,56 +69,30 @@ function RegisterView() {
     history.push('/');
   };
 
+  const handleBack = () => {
+    history.push('/');
+  };
+
   return (
     <Page title="Register" className={classes.root}>
-      <Container maxWidth="sm">
-        <Box
-          display="flex"
-          alignItems="center"
-          mb={1}
-        >
-          <Button
-            variant="outlined"
-            color="primary"
-            href="/"
-            className={classes.button}
-            startIcon={<KeyboardBackspaceIcon />}
-          >
-            Trở về trang chủ
-          </Button>
-        </Box>
-        <Card>
-          <CardContent>
-            <Box
-              mt={1}
-              mb={3.5}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
+      <Grid className={classes.grid} container>
+        <Grid className={classes.bgWrapper} item lg={5}>
+          <div className={classes.bg} />
+        </Grid>
+        <Grid className={classes.content} item lg={7} xs={12}>
+          <div className={classes.contentHeader}>
+            <IconButton
+              className={classes.backButton}
+              onClick={handleBack}
             >
-              <Typography variant="h5" gutterBottom>
-                Create your Flash Ticket account
-              </Typography>
-            </Box>
-            <Box>
-              <RegisterForm onSubmitSuccess={onSubmitSuccess} />
-            </Box>
-            <Box my={2}>
-              <Divider />
-            </Box>
-            <Box mt={2}>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-              >
-                <Link href="login">
-                  Bạn đã có tài khoản?
-                </Link>
-              </Typography>
-            </Box>
-          </CardContent>
-        </Card>
-      </Container>
+              <ArrowBackIcon />
+            </IconButton>
+          </div>
+          <div className={classes.contentBody}>
+            <RegisterForm onSubmitSuccess={onSubmitSuccess} />
+          </div>
+        </Grid>
+      </Grid>
     </Page>
   );
 }

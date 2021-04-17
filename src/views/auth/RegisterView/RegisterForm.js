@@ -8,9 +8,11 @@ import {
   FormControl,
   FormLabel,
   Grid,
+  Link,
   Radio,
   RadioGroup,
   TextField,
+  Typography,
   makeStyles
 } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -21,8 +23,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { register } from 'src/redux/actions/accountActions';
 
-const useStyles = makeStyles(() => ({
-  root: {
+const useStyles = makeStyles((theme) => ({
+  form: {
+    paddingLeft: '100px',
+    paddingRight: '100px',
+    paddingBottom: '125px',
+    flexBasis: '700px',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }
+  },
+  Title: {
+    color: 'white',
+    fontWeight: '330',
+    fontSize: 30,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 22
+    }
   }
 }));
 
@@ -98,8 +116,22 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
       }) => (
         <form
           onSubmit={handleSubmit}
-          className={classes.root}
+          className={classes.form}
         >
+          <Box
+            mb={1.5}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Typography
+              className={classes.Title}
+              variant="h5"
+              gutterBottom
+            >
+              Create your Flash Ticket account
+            </Typography>
+          </Box>
           <TextField
             fullWidth
             name="name"
@@ -132,7 +164,7 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
               }}
             />
           </Grid>
-          <Box>
+          <Box mt={1}>
             <FormLabel>Giới tính</FormLabel>
             <RadioGroup
               row
@@ -200,6 +232,17 @@ function RegisterForm({ onSubmitSuccess, onSubmitFail, ...rest }) {
           >
             Đăng kí
           </Button>
+          <Box my={2} />
+          <Box mt={2}>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+            >
+              <Link href="login">
+                Bạn đã có tài khoản?
+              </Link>
+            </Typography>
+          </Box>
         </form>
       )}
     </Formik>
