@@ -16,13 +16,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh'
   },
-  button: {
-    color: '#ffffff',
-    opacity: 0.95
-  },
-  card: {
-    paddingTop: 10
-  },
   grid: {
     height: '100%'
   },

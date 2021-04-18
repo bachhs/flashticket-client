@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Box, makeStyles } from '@material-ui/core';
+import {
+  Box, Grid, Typography, makeStyles
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   row: {
@@ -49,7 +51,13 @@ export default function BookingSeats(props) {
 
   return (
     <>
-
+      <Box height="58vh">
+        <Grid container alignItems="center" justify="center">
+          <Typography variant="h2" style={{ marginTop: '27vh' }}>
+            I do not know how to do it :)
+          </Typography>
+        </Grid>
+      </Box>
       <Box width={1} mt={10}>
         <div className={classes.seatInfoContainer}>
           <div className={classes.seatInfo}>

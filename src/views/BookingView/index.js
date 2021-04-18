@@ -1,9 +1,15 @@
 import React from 'react';
 
-function BookingView() {
+import Page from 'src/components/Page';
+
+import BookingView from './BookingView';
+
+function BookingPage() {
   return (
-    <p>Hello</p>
+    <Page>
+      <BookingView />
+    </Page>
   );
 }
 
-export default BookingView;
+export default BookingPage;
