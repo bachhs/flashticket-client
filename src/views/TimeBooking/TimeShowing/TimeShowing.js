@@ -58,12 +58,6 @@ function TimeShowing() {
           </Tabs>
         </Box>
         <Divider />
-        <Box mt={1}>
-          {currentTab === 'day1' }
-          {currentTab === 'day2' }
-          {currentTab === 'day3' }
-          {currentTab === 'day4' }
-        </Box>
         <TimeShowingDetail />
       </Container>
     </>

@@ -145,7 +145,7 @@ function LoginForm({ onSubmitSuccess, onSubmitFail }) {
             type="submit"
             variant="contained"
             color="primary"
-            disable={isSubmitting}
+            disabled={isSubmitting}
             fullWidth
           >
             Đăng nhập

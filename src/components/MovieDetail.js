@@ -11,7 +11,8 @@ import {
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import Skeleton from '@material-ui/lab/Skeleton';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -149,6 +150,9 @@ const useStyles = makeStyles((theme) => ({
 function MovieDetail({ movie }) {
   const classes = useStyles();
 
+  const account = useSelector((state) => state.account);
+  const history = useHistory();
+
   const [trailerDialogOpen, setTrailerDialogOpen] = useState(false);
 
   return (
@@ -259,18 +263,23 @@ function MovieDetail({ movie }) {
             variant="body1"
             color="primary"
           >
-            Star:  Henry Cavill, Gal Gadot
+            Star: Henry Cavill, Gal Gadot
           </Typography>
           <Grid
             container
             className={classes.bt}
           >
-            <Link to="" style={{ textDecoration: 'none' }}>
-              <Button className={classes.btBook}>
-                Book Now
-                <ConfirmationNumberIcon style={{ marginLeft: 8 }} />
-              </Button>
-            </Link>
+            <Button
+              className={classes.btBook}
+              onClick={() => {
+                if (!account.user) {
+                  history.push('/login?redirectUrl=showtime');
+                } else history.push('/showtime');
+              }}
+            >
+              Book Now
+              <ConfirmationNumberIcon style={{ marginLeft: 8 }} />
+            </Button>
             <Button
               className={classes.btTrailers}
               onClick={() => {

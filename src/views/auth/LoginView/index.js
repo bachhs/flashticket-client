@@ -6,7 +6,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import Page from 'src/components/Page';
 
@@ -59,12 +59,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 function LoginView() {
   const classes = useStyles();
   const history = useHistory();
 
+  const query = useQuery();
+
+  console.log(query.get('redirectUrl'));
+
   const onSubmitSuccess = () => {
-    history.push('/');
+    history.push(`/${query.get('redirectUrl')}`);
   };
 
   const handleBack = () => {

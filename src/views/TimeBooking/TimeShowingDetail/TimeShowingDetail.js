@@ -1,12 +1,43 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 
 import {
   Box,
   Button,
   Grid,
+  Tab,
+  Tabs,
   Typography,
-  makeStyles
+  makeStyles,
+  withStyles
 } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
+const StyledTabs = withStyles({
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    '& > span': {
+      maxWidth: 40,
+      width: '100%',
+      backgroundColor: '#635ee7',
+    },
+  },
+})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
+
+const StyledTab = withStyles((theme) => ({
+  root: {
+    textTransform: 'none',
+    color: '#fff',
+    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(15),
+    marginRight: theme.spacing(1),
+    '&:focus': {
+      opacity: 1,
+    },
+  },
+}))((props) => <Tab disableRipple {...props} />);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +72,20 @@ const useStyles = makeStyles((theme) => ({
 
 function TimeShowingDetail() {
   const classes = useStyles();
+
+  const [movieCity, setMovieCity] = useState(0);
+  const [movieType, setMovieType] = useState(0);
+
+  const handleCityChange = (event, newValue) => {
+    setMovieCity(newValue);
+  };
+
+  const handleTypeChange = (event, newValue) => {
+    setMovieType(newValue);
+  };
+
+  const history = useHistory();
+
   return (
     <>
       <Grid
@@ -49,26 +94,27 @@ function TimeShowingDetail() {
         container
       >
         <Grid item style={{ marginBottom: 10 }}>
-          <Button style={{ color: '#fdf7f7f2', paddingRight: 13, paddingLeft: 13 }}>
-            Hà Nội
-          </Button>
-          <Button style={{ color: '#fdf7f7f2', paddingRight: 13, paddingLeft: 13 }}>
-            Thái Bình
-          </Button>
-          <Button style={{ color: '#fdf7f7f2', paddingRight: 13, paddingLeft: 13 }}>
-            Nam Định
-          </Button>
+          <StyledTabs value={movieCity} onChange={handleCityChange} aria-label="styled tabs example">
+            <StyledTab label="Hà Nội" />
+            <StyledTab label="Thái Bình" />
+            <StyledTab label="Nam Định" />
+          </StyledTabs>
         </Grid>
 
         <Box className={classes.divider} />
 
         <Grid item style={{ marginTop: 10, marginBottom: 10 }}>
-          <Button className={classes.movieType}>
-            2D Phụ Đề Việt
-          </Button>
-          <Button className={classes.movieType}>
-            IMAX
-          </Button>
+          <Tabs
+            onChange={handleTypeChange}
+            scrollButtons="auto"
+            textColor="secondary"
+            value={movieType}
+            variant="scrollable"
+          >
+            <Tab label="IMAX" />
+            <Tab label="4DX" />
+            <Tab label="Gold Class" />
+          </Tabs>
         </Grid>
 
         <Box className={classes.divider} />
@@ -84,7 +130,7 @@ function TimeShowingDetail() {
                 08:40 AM
               </Button>
               <Typography className={classes.cinemaType}> Rạp Premium</Typography>
-              <Button className={classes.timeShow}>
+              <Button className={classes.timeShow} onClick={() => { history.push('/booking'); }}>
                 08:40 AM
               </Button>
               <Button className={classes.timeShow}>
