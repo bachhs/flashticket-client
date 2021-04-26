@@ -48,7 +48,14 @@ const useStyles = makeStyles((theme) => ({
     perspective: '1000px',
     height: '100%'
   },
-  Seat: {
+  seatEmpty: {
+    backgroundColor: 'rgb(255, 255, 255, 0)',
+    height: 20,
+    width: 25,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  seatAvailable: {
     cursor: 'pointer',
     backgroundColor: 'rgb(212 204 205)',
     height: 20,
@@ -57,9 +64,18 @@ const useStyles = makeStyles((theme) => ({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10
   },
-  seatOccupied: {
+  seatReserved: {
     cursor: 'pointer',
     backgroundColor: 'rgb(65, 66, 70)',
+    height: 20,
+    width: 25,
+    margin: 6,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  seatSelected: {
+    cursor: 'pointer',
+    backgroundColor: 'rgb(120, 205, 4)',
     height: 20,
     width: 25,
     margin: 6,
@@ -89,14 +105,28 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   [theme.breakpoints.down('md')]: {
-    Seat: {
+    seatEmpty: {
       height: 12,
       width: 15,
       margin: 4,
       borderTopLeftRadius: 8,
       borderTopRightRadius: 8
     },
-    seatOccupied: {
+    seatAvailable: {
+      height: 12,
+      width: 15,
+      margin: 4,
+      borderTopLeftRadius: 8,
+      borderTopRightRadius: 8
+    },
+    seatReserved: {
+      height: 12,
+      width: 15,
+      margin: 4,
+      borderTopLeftRadius: 8,
+      borderTopRightRadius: 8
+    },
+    seatSelected: {
       height: 12,
       width: 15,
       margin: 4,
@@ -111,7 +141,13 @@ export default function BookingSeats(props) {
 
   const [seats, setSeats] = useState(
     [
-      [1]
+      [1, 2, 2, 0, 1, 1, 2, 2, 1, 1, 1, 1, 0, 1, 2, 1],
+      [2, 2, 1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 0, 1, 1, 1],
+      [1, 2, 1, 0, 1, 1, 2, 2, 2, 1, 1, 1, 0, 2, 2, 1],
+      [1, 1, 1, 0, 1, 1, 1, 1, 2, 2, 1, 1, 0, 1, 2, 2],
+      [1, 1, 2, 0, 1, 1, 1, 2, 2, 1, 2, 2, 0, 1, 1, 1],
+      [2, 2, 1, 0, 1, 1, 1, 2, 2, 1, 1, 1, 0, 2, 2, 1],
+      [1, 1, 2, 0, 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 2, 2],
     ]
   );
 
@@ -140,29 +176,33 @@ export default function BookingSeats(props) {
                     case (SEAT_STATUS.available):
                       return (
                         <div
-                          className={classes.Seat}
+                          className={classes.seatAvailable}
                           key={columnIndex}
                           onClick={() => handleSeatSelect(rowIndex, columnIndex)}
-                        >
-                          {rowIndex}
-                          {' '}
-                          {columnIndex}
-                        </div>
+                        />
                       );
                     case (SEAT_STATUS.selected):
                       return (
                         <div
-                          className={classes.seatOccupied}
+                          className={classes.seatSelected}
                           key={columnIndex}
                           onClick={() => handleSeatUnSelect(rowIndex, columnIndex)}
-                        >
-                          {rowIndex}
-                          {' '}
-                          {columnIndex}
-                        </div>
+                        />
+                      );
+                    case (SEAT_STATUS.reserved):
+                      return (
+                        <div
+                          className={classes.seatReserved}
+                          key={columnIndex}
+                        />
                       );
                     default:
-                      return null;
+                      return (
+                        <div
+                          className={classes.seatEmpty}
+                          key={columnIndex}
+                        />
+                      );
                   }
                 })}
               </div>
