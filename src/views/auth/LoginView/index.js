@@ -69,8 +69,6 @@ function LoginView() {
 
   const query = useQuery();
 
-  console.log(query.get('redirectUrl'));
-
   const onSubmitSuccess = () => {
     history.push(`/${query.get('redirectUrl')}`);
   };

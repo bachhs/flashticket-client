@@ -43,7 +43,7 @@ function BookingTitle() {
       >
         <Box>
           <Grid container>
-            <Typography display="inline-block" style={{ fontWeight: 300 }}>
+            <Typography display="initial" style={{ fontWeight: 300 }}>
               Showing on
             </Typography>
             <Typography className={classes.dayShowing}>

@@ -1,8 +1,12 @@
-import React from 'react';
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 
 import {
   Box, Grid, makeStyles
 } from '@material-ui/core';
+
+import { SEAT_STATUS } from 'src/utils/constants';
 
 const useStyles = makeStyles((theme) => ({
   row: {
@@ -105,167 +109,64 @@ const useStyles = makeStyles((theme) => ({
 export default function BookingSeats(props) {
   const classes = useStyles(props);
 
+  const [seats, setSeats] = useState(
+    [
+      [1]
+    ]
+  );
+
+  const handleSeatSelect = (row, column) => {
+    const copy = [...seats];
+    copy[row][column] = SEAT_STATUS.selected;
+    setSeats(copy);
+  };
+
+  const handleSeatUnSelect = (row, column) => {
+    const copy = [...seats];
+    copy[row][column] = SEAT_STATUS.available;
+    setSeats(copy);
+  };
+
   return (
     <>
       <Box>
         <Grid container alignItems="center" justify="center">
           <div className={classes.container}>
             <div className={classes.screen} />
-
-            <div className={classes.row1}>
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-
-              <div className={classes.Seat} style={{ marginLeft: 20 }} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-            </div>
-
-            <div className={classes.row1}>
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-
-              <div className={classes.Seat} style={{ marginLeft: 20 }} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-            </div>
-
-            <div className={classes.row1}>
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-
-              <div className={classes.seatOccupied} style={{ marginLeft: 20 }} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-            </div>
-
-            <div className={classes.row1}>
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-
-              <div className={classes.seatOccupied} style={{ marginLeft: 20 }} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-            </div>
-
-            <div className={classes.row1}>
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-
-              <div className={classes.Seat} style={{ marginLeft: 20 }} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-            </div>
-
-            <div className={classes.row1}>
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-
-              <div className={classes.Seat} style={{ marginLeft: 20 }} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-            </div>
-
-            <div className={classes.row1}>
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} style={{ marginRight: 20 }} />
-
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-              <div className={classes.Seat} />
-
-              <div className={classes.seatOccupied} style={{ marginLeft: 20 }} />
-              <div className={classes.seatOccupied} />
-              <div className={classes.Seat} />
-            </div>
+            {seats.map((row, rowIndex) => (
+              <div className={classes.row} key={rowIndex}>
+                {row.map((column, columnIndex) => {
+                  switch (column) {
+                    case (SEAT_STATUS.available):
+                      return (
+                        <div
+                          className={classes.Seat}
+                          key={columnIndex}
+                          onClick={() => handleSeatSelect(rowIndex, columnIndex)}
+                        >
+                          {rowIndex}
+                          {' '}
+                          {columnIndex}
+                        </div>
+                      );
+                    case (SEAT_STATUS.selected):
+                      return (
+                        <div
+                          className={classes.seatOccupied}
+                          key={columnIndex}
+                          onClick={() => handleSeatUnSelect(rowIndex, columnIndex)}
+                        >
+                          {rowIndex}
+                          {' '}
+                          {columnIndex}
+                        </div>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
+              </div>
+            ))}
           </div>
         </Grid>
       </Box>
