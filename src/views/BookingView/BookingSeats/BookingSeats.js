@@ -26,10 +26,8 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   seatInfoContainer: {
-    width: '50%',
     margin: 'auto',
     display: 'flex',
-    alignItems: 'center',
     textAlign: 'center',
     color: '#eee'
   },
@@ -65,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     borderTopRightRadius: 10
   },
   seatReserved: {
-    cursor: 'pointer',
+    cursor: 'not-allowed',
     backgroundColor: 'rgb(65, 66, 70)',
     height: 20,
     width: 25,
@@ -211,36 +209,38 @@ export default function BookingSeats(props) {
         </Grid>
       </Box>
       <Box width={1} mt={10}>
-        <div className={classes.seatInfoContainer}>
-          <div className={classes.seatInfo}>
-            <div
-              className={classes.seatInfoLabel}
-              style={{ background: 'rgb(212 204 205)' }}
-            />
-            Seat Available
+        <Grid container alignItems="center" justify="center">
+          <div className={classes.seatInfoContainer}>
+            <div className={classes.seatInfo}>
+              <div
+                className={classes.seatInfoLabel}
+                style={{ background: 'rgb(212 204 205)' }}
+              />
+              Seat Available
+            </div>
+            <div className={classes.seatInfo}>
+              <div
+                className={classes.seatInfoLabel}
+                style={{ background: 'rgb(65, 66, 70)' }}
+              />
+              Reserved Seat
+            </div>
+            <div className={classes.seatInfo}>
+              <div
+                className={classes.seatInfoLabel}
+                style={{ background: 'rgb(120, 205, 4)' }}
+              />
+              Selected Seat
+            </div>
+            <div className={classes.seatInfo}>
+              <div
+                className={classes.seatInfoLabel}
+                style={{ background: 'rgb(14, 151, 218)' }}
+              />
+              Recommended Seat
+            </div>
           </div>
-          <div className={classes.seatInfo}>
-            <div
-              className={classes.seatInfoLabel}
-              style={{ background: 'rgb(65, 66, 70)' }}
-            />
-            Reserved Seat
-          </div>
-          <div className={classes.seatInfo}>
-            <div
-              className={classes.seatInfoLabel}
-              style={{ background: 'rgb(120, 205, 4)' }}
-            />
-            Selected Seat
-          </div>
-          <div className={classes.seatInfo}>
-            <div
-              className={classes.seatInfoLabel}
-              style={{ background: 'rgb(14, 151, 218)' }}
-            />
-            Recommended Seat
-          </div>
-        </div>
+        </Grid>
       </Box>
     </>
   );
