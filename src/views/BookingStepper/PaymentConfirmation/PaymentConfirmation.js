@@ -18,13 +18,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundImage: 'url(https://scontent.fhph1-2.fna.fbcdn.net/v/t1.15752-9/177030036_4522246731135825_4582645564598705243_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=ae9488&_nc_ohc=UKJAAzotXYgAX_oo7Y6&_nc_ht=scontent.fhph1-2.fna&oh=1c6292915634be2164f4c9832ed233b1&oe=60B140D1)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     opacity: 0.8
-  },
-  paymentConfirm: {
   },
   filmTitle: {
     maxWidth: '60%',
@@ -32,30 +30,20 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.2,
     fontWeight: 390
   },
-  showingTime: {
-    fontSize: '25px',
-    lineHeight: 1.2,
-    fontWeight: 350,
-    marginTop: theme.spacing(1)
-  },
-  cinema: {
-    fontSize: '23px',
-    opacity: 0.98,
-    lineHeight: 1.2,
-    fontWeight: 350,
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  },
-  seat: {
-    fontSize: '22px'
-  },
   price: {
     fontSize: '22px'
   },
+  paymentNotification: {
+    fontSize: '30px',
+    maxWidth: 500,
+    lineHeight: 1.2,
+    fontWeight: 350,
+    marginTop: theme.spacing(4)
+  },
   [theme.breakpoints.down('md')]: {
     ticketBg: {
-      height: 300,
-      width: 180
+      height: 320,
+      width: 230
     },
     paymentConfirm: {
       padding: theme.spacing(5)
@@ -63,22 +51,13 @@ const useStyles = makeStyles((theme) => ({
     filmTitle: {
       fontSize: '25px'
     },
-    showingTime: {
-      fontSize: '21px'
-    },
-    cinema: {
-      fontSize: '19px'
-    },
-    seat: {
-      fontSize: '15px'
-    },
     price: {
       fontSize: '15px'
-    },
+    }
   }
 }));
 
-function SuccessPayment() {
+function PaymentConfirmation() {
   const classes = useStyles();
   return (
     <>
@@ -102,44 +81,19 @@ function SuccessPayment() {
             >
               Zack Snyder&apos;s Justice League
             </Typography>
-
-            <Typography
-              className={classes.showingTime}
-              variant="body1"
-              color="secondary"
-            >
-              Showing 8:00 PM - 20/6/2021
-            </Typography>
-            <Typography
-              className={classes.cinema}
-              variant="body2"
-              color="inherit"
-            >
-              IFILM Paper Brigde
-            </Typography>
-            <Typography
-              className={classes.seat}
-              variant="subtitle1"
-              color="primary"
-              style={{ paddingRight: 20 }}
-            >
-              Seats: A1, A2, A3
-            </Typography>
-            <Typography
-              className={classes.seat}
-              variant="subtitle1"
-              color="primary"
-              style={{ paddingRight: 20 }}
-            >
-              Total: 3 seats
-            </Typography>
-
             <Typography
               className={classes.price}
               variant="body1"
               color="primary"
             >
-              Price: 30$
+              3 Tickets - 30$
+            </Typography>
+            <Typography
+              className={classes.paymentNotification}
+              variant="body1"
+              color="secondary"
+            >
+              Click FINISH when you have finished the payment !!!
             </Typography>
           </div>
         </Grid>
@@ -148,4 +102,4 @@ function SuccessPayment() {
   );
 }
 
-export default SuccessPayment;
+export default PaymentConfirmation;

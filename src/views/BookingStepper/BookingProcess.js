@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 
 import MethodPayment from './MethodPayment/MethodPayment';
 import OrderConfirm from './OrderConfirm/OrderConfirm';
-import SuccessPayment from './SuccessPayment/SuccessPayment';
+import SuccessPayment from './PaymentConfirmation/PaymentConfirmation';
 import Ticket from './Ticket/Ticket';
 
 const useQontoStepIconStyles = makeStyles({
@@ -185,7 +185,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Payment Information', 'Payment Method', 'Payment Confirmation'];
 }
 
 function getStepContent(step) {
@@ -209,7 +209,7 @@ function getStepContent(step) {
 
 function BookingProcess() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
   const handleNext = () => {
@@ -222,6 +222,10 @@ function BookingProcess() {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const handlePrint = () => {
+
   };
 
   return (
@@ -243,7 +247,7 @@ function BookingProcess() {
                 <Button onClick={handleReset} className={classes.buttonSuccess} variant="contained">
                   Ticket
                 </Button>
-                <Button onClick={handleReset} className={classes.buttonSuccess} variant="contained">
+                <Button onClick={handlePrint} className={classes.buttonSuccess} variant="contained">
                   Print
                 </Button>
               </div>

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundImage: 'url(https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.2,
     fontWeight: 350,
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
   },
   seat: {
     fontSize: '22px'
@@ -52,10 +51,29 @@ const useStyles = makeStyles((theme) => ({
   price: {
     fontSize: '22px'
   },
+  qrCode: {
+    height: 200,
+    width: 200,
+    marginTop: theme.spacing(1),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundImage: 'url(https://vinacheck.vn/media/2019/05/ma-qr-code_vinacheck.vm_001.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    opacity: 0.9
+  },
+  subText: {
+    color: '#cfd6e1',
+    lineHeight: 1.2,
+    fontWeight: 350,
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(1)
+  },
   [theme.breakpoints.down('md')]: {
     ticketBg: {
-      height: 300,
-      width: 180
+      height: 320,
+      width: 230
     },
     paymentConfirm: {
       padding: theme.spacing(5)
@@ -126,21 +144,13 @@ function Ticket() {
               Seats: A1, A2, A3
             </Typography>
             <Typography
-              className={classes.seat}
-              variant="subtitle1"
-              color="primary"
-              style={{ paddingRight: 20 }}
+              className={classes.subText}
+              variant="body2"
+              color="inherit"
             >
-              Total: 3 seats
+              *Give the QRCODE to the ticket collector to enter the theater
             </Typography>
-
-            <Typography
-              className={classes.price}
-              variant="body1"
-              color="primary"
-            >
-              Price: 30$
-            </Typography>
+            <div className={classes.qrCode} />
           </div>
         </Grid>
       </Grid>
