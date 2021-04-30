@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  Button,
   Grid,
   Typography,
   makeStyles
@@ -18,13 +19,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundImage: 'url(https://image.freepik.com/free-vector/payment-background-design_1223-72.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     opacity: 0.8
-  },
-  paymentConfirm: {
   },
   filmTitle: {
     maxWidth: '60%',
@@ -32,45 +31,40 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.2,
     fontWeight: 390
   },
-  showingTime: {
-    fontSize: '25px',
-    lineHeight: 1.2,
-    fontWeight: 350,
-    marginTop: theme.spacing(1)
-  },
-  cinema: {
-    fontSize: '23px',
-    opacity: 0.98,
-    lineHeight: 1.2,
-    fontWeight: 350,
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  },
-  seat: {
-    fontSize: '22px'
-  },
   price: {
     fontSize: '22px'
   },
+  btMethod1: {
+    marginTop: theme.spacing(2),
+    borderRadius: 0,
+    padding: '10px 42px',
+    fontSize: 12,
+    backgroundColor: '#ff0000bd'
+  },
+  btMethod2: {
+    marginTop: theme.spacing(2),
+    borderRadius: 0,
+    padding: '10px 40px',
+    fontSize: 12,
+    backgroundColor: '#ff0000bd'
+  },
+  btMethod3: {
+    marginTop: theme.spacing(2),
+    borderRadius: 0,
+    padding: '10px 45px',
+    fontSize: 12,
+    backgroundColor: '#ff0000bd'
+  },
   [theme.breakpoints.down('md')]: {
     ticketBg: {
-      height: 300,
-      width: 180
+      height: 320,
+      width: 230
     },
     paymentConfirm: {
       padding: theme.spacing(5)
     },
     filmTitle: {
       fontSize: '25px'
-    },
-    showingTime: {
-      fontSize: '21px'
-    },
-    cinema: {
-      fontSize: '19px'
-    },
-    seat: {
-      fontSize: '15px'
     },
     price: {
       fontSize: '15px'
@@ -104,43 +98,28 @@ function MethodPayment() {
             </Typography>
 
             <Typography
-              className={classes.showingTime}
-              variant="body1"
-              color="secondary"
-            >
-              Showing 8:00 PM - 20/6/2021
-            </Typography>
-            <Typography
-              className={classes.cinema}
-              variant="body2"
-              color="inherit"
-            >
-              IFILM Paper Brigde
-            </Typography>
-            <Typography
-              className={classes.seat}
-              variant="subtitle1"
-              color="primary"
-              style={{ paddingRight: 20 }}
-            >
-              Seats: A1, A2, A3
-            </Typography>
-            <Typography
-              className={classes.seat}
-              variant="subtitle1"
-              color="primary"
-              style={{ paddingRight: 20 }}
-            >
-              Total: 3 seats
-            </Typography>
-
-            <Typography
               className={classes.price}
               variant="body1"
               color="primary"
             >
-              Price: 30$
+              3 Tickets - Price: 30$
             </Typography>
+            <Grid
+              direction="column"
+              justify="space-evenly"
+              alignItems="flex-start"
+              className={classes.paymentMethod}
+            >
+              <Grid item xs={12}>
+                <Button className={classes.btMethod1}> MoMo</Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Button className={classes.btMethod2}> AirPay</Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Button className={classes.btMethod3}> Card</Button>
+              </Grid>
+            </Grid>
           </div>
         </Grid>
       </Grid>

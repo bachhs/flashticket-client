@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundImage: 'url(https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.down('md')]: {
     ticketBg: {
-      height: 300,
-      width: 180
+      height: 320,
+      width: 230
     },
     paymentConfirm: {
       padding: theme.spacing(5)
