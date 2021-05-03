@@ -6,7 +6,7 @@ import BookingProcess from './BookingProcess';
 
 function BookingStepper() {
   return (
-    <Page>
+    <Page title="Thanh toán">
       <BookingProcess />
     </Page>
   );

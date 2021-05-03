@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import {
@@ -8,6 +9,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   bannerTitle: {
@@ -44,27 +47,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function BookingCheckout() {
+function BookingCheckout({ seatSelected }) {
   const classes = useStyles();
+  const money = seatSelected.length * 5;
+
   return (
     <Box className={classes.boxAll}>
       <Grid container>
         <Grid item xs={8} md={10}>
           <Grid container spacing={3} style={{ padding: 20 }}>
-            <Grid item className={classes.hideOnSmall}>
-              <Typography className={classes.bannerTitle}>Name</Typography>
-              <Typography className={classes.bannerContent}>
-                VSsYii
-              </Typography>
-            </Grid>
             <Grid item>
               <Typography className={classes.bannerTitle}>Tickets</Typography>
-              <Typography className={classes.bannerContent}>1 Tickets</Typography>
+              <Typography className={classes.bannerContent}>{seatSelected.toString()}</Typography>
             </Grid>
             <Grid item>
               <Typography className={classes.bannerTitle}>Price</Typography>
               <Typography className={classes.bannerContent}>
-                5 $
+                {money}
+                {' '}
+                $
               </Typography>
             </Grid>
           </Grid>
@@ -82,7 +83,13 @@ function BookingCheckout() {
           <Button
             style={{ color: 'white' }}
             fullWidth
+            component={Link}
+            to={{
+              pathname: '/bookingprocess',
+              search: `?seat=${seatSelected}`,
+            }}
           >
+
             Checkout
             <ConfirmationNumberIcon className={classes.icon} />
           </Button>
@@ -91,5 +98,9 @@ function BookingCheckout() {
     </Box>
   );
 }
+
+BookingCheckout.propTypes = {
+  seatSelected: PropTypes.array
+};
 
 export default BookingCheckout;

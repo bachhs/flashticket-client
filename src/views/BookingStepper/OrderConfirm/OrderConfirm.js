@@ -5,6 +5,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU)',
+    backgroundImage: 'url(http://game4v.com/g4v-content/uploads/2021/02/Justice-League-Snyder-Cut-1-game4v.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -78,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function OrderConfirm() {
+function OrderConfirm({ seat }) {
   const classes = useStyles();
   return (
     <>
@@ -123,7 +124,9 @@ function OrderConfirm() {
               color="primary"
               style={{ paddingRight: 20 }}
             >
-              Seats: A1, A2, A3
+              Seats:
+              {' '}
+              {seat.join(', ')}
             </Typography>
             <Typography
               className={classes.seat}
@@ -131,7 +134,11 @@ function OrderConfirm() {
               color="primary"
               style={{ paddingRight: 20 }}
             >
-              Total: 3 seats
+              Total:
+              {' '}
+              {seat.length}
+              {' '}
+              seats
             </Typography>
 
             <Typography
@@ -139,7 +146,10 @@ function OrderConfirm() {
               variant="body1"
               color="primary"
             >
-              Price: 30$
+              Price:
+              {' '}
+              {seat.length * 5}
+              $
             </Typography>
           </div>
         </Grid>
@@ -147,5 +157,9 @@ function OrderConfirm() {
     </>
   );
 }
+
+OrderConfirm.propTypes = {
+  seat: PropTypes.array
+};
 
 export default OrderConfirm;

@@ -5,6 +5,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function PaymentConfirmation() {
+function PaymentConfirmation({ seat }) {
   const classes = useStyles();
   return (
     <>
@@ -86,7 +87,12 @@ function PaymentConfirmation() {
               variant="body1"
               color="primary"
             >
-              3 Tickets - 30$
+              {seat.length}
+              {' '}
+              Tickets - Price:
+              {' '}
+              {seat.length * 5}
+              $
             </Typography>
             <Typography
               className={classes.paymentNotification}
@@ -101,5 +107,9 @@ function PaymentConfirmation() {
     </>
   );
 }
+
+PaymentConfirmation.propTypes = {
+  seat: PropTypes.array
+};
 
 export default PaymentConfirmation;

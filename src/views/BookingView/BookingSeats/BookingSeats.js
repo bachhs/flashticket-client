@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   Box, Grid, makeStyles
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 import { SEAT_STATUS } from 'src/utils/constants';
 
@@ -134,32 +134,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function BookingSeats(props) {
-  const classes = useStyles(props);
-
-  const [seats, setSeats] = useState(
-    [
-      [1, 2, 2, 0, 1, 1, 2, 2, 1, 1, 1, 1, 0, 1, 2, 1],
-      [2, 2, 1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 0, 1, 1, 1],
-      [1, 2, 1, 0, 1, 1, 2, 2, 2, 1, 1, 1, 0, 2, 2, 1],
-      [1, 1, 1, 0, 1, 1, 1, 1, 2, 2, 1, 1, 0, 1, 2, 2],
-      [1, 1, 2, 0, 1, 1, 1, 2, 2, 1, 2, 2, 0, 1, 1, 1],
-      [2, 2, 1, 0, 1, 1, 1, 2, 2, 1, 1, 1, 0, 2, 2, 1],
-      [1, 1, 2, 0, 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 2, 2],
-    ]
-  );
-
-  const handleSeatSelect = (row, column) => {
-    const copy = [...seats];
-    copy[row][column] = SEAT_STATUS.selected;
-    setSeats(copy);
-  };
-
-  const handleSeatUnSelect = (row, column) => {
-    const copy = [...seats];
-    copy[row][column] = SEAT_STATUS.available;
-    setSeats(copy);
-  };
+function BookingSeats({
+  seats,
+  handleSeatSelect,
+  handleSeatUnSelect,
+}) {
+  const classes = useStyles();
 
   return (
     <>
@@ -245,3 +225,11 @@ export default function BookingSeats(props) {
     </>
   );
 }
+
+BookingSeats.propTypes = {
+  seats: PropTypes.any,
+  handleSeatSelect: PropTypes.func,
+  handleSeatUnSelect: PropTypes.func
+};
+
+export default BookingSeats;

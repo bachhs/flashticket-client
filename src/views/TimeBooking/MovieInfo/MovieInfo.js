@@ -60,14 +60,14 @@ const useStyles = makeStyles((theme) => ({
 function MovieInfo(props) {
   const classes = useStyles(props);
   const movie = [{
-    image: 'https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU',
+    image: 'http://game4v.com/g4v-content/uploads/2021/02/Justice-League-Snyder-Cut-1-game4v.jpg',
     title: "Zack Snyder's Justice League",
     director: 'VSsYii',
     cast: 'Gal Gadot',
     genre: 'Action'
   },
   {
-    image: 'https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU',
+    image: 'http://game4v.com/g4v-content/uploads/2021/02/Justice-League-Snyder-Cut-1-game4v.jpg',
     title: "Zack Snyder's Justice League",
     director: 'VSsYii',
     cast: 'Gal Gadot',

@@ -6,6 +6,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function MethodPayment() {
+function MethodPayment({ seat }) {
   const classes = useStyles();
   return (
     <>
@@ -102,7 +103,12 @@ function MethodPayment() {
               variant="body1"
               color="primary"
             >
-              3 Tickets - Price: 30$
+              {seat.length}
+              {' '}
+              Tickets - Price:
+              {' '}
+              {seat.length * 5}
+              $
             </Typography>
             <Grid
               direction="column"
@@ -126,5 +132,9 @@ function MethodPayment() {
     </>
   );
 }
+
+MethodPayment.propTypes = {
+  seat: PropTypes.array
+};
 
 export default MethodPayment;

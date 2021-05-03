@@ -18,6 +18,9 @@ import VideoLabelIcon from '@material-ui/icons/VideoLabel';
 import Alert from '@material-ui/lab/Alert';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import {
+  useLocation
+} from 'react-router-dom';
 
 import MethodPayment from './MethodPayment/MethodPayment';
 import OrderConfirm from './OrderConfirm/OrderConfirm';
@@ -188,27 +191,35 @@ function getSteps() {
   return ['Payment Information', 'Payment Method', 'Payment Confirmation'];
 }
 
-function getStepContent(step) {
+function getStepContent(step, seat) {
   switch (step) {
     case 0:
       return (
-        <OrderConfirm />
+        <OrderConfirm seat={seat} />
       );
     case 1:
       return (
-        <MethodPayment />
+        <MethodPayment seat={seat} />
       );
     case 2:
       return (
-        <SuccessPayment />
+        <SuccessPayment seat={seat} />
       );
     default:
       return 'Unknown step';
   }
 }
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 function BookingProcess() {
   const classes = useStyles();
+
+  const query = useQuery();
+  const seat = query.get('seat').split(',');
+
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
@@ -241,7 +252,7 @@ function BookingProcess() {
         <div>
           {activeStep === steps.length ? (
             <div>
-              <Ticket />
+              <Ticket seat={seat} />
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Alert className={classes.buttonSuccess} style={{ width: '40vw', marginLeft: '6vw' }} variant="filled" severity="success">Booking Succeed</Alert>
                 <Button onClick={handleReset} className={classes.buttonSuccess} variant="contained">
@@ -255,9 +266,9 @@ function BookingProcess() {
           ) : (
             <div>
               <Box className={classes.instructions}>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, seat)}
               </Box>
-              <Box className={classes.boxButton}>
+              <Box className={classes.boxButton} mb={3}>
                 <Button
                   disabled={activeStep === 0}
                   onClick={handleBack}
