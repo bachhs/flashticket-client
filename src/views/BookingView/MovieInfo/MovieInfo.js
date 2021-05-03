@@ -63,15 +63,15 @@ const useStyles = makeStyles((theme) => ({
 function MovieInfo(props) {
   const classes = useStyles(props);
   const movie = [{
-    image: 'https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/m/o/mortal_kombat_-_vn_-_payoff_poster_1_1__1.jpg',
-    title: 'Mortal Kombat: Cuộc chiến sinh tử',
+    image: 'https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU',
+    title: "Zack Snyder's Justice League",
     director: 'VSsYii',
     cast: 'Gal Gadot',
     genre: 'Action'
   },
   {
-    image: 'https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/m/o/mortal_kombat_-_vn_-_payoff_poster_1_1__1.jpg',
-    title: 'Mortal Kombat: Cuộc chiến sinh tử',
+    image: 'https://lh3.googleusercontent.com/proxy/_FD3Ywl3rdVEAgoUOHpgy-SXp5wnR6C4e2q9zZPH0l0grWr5ruJ3ZHUmmAu0oUMz4HYfBezix-sXMQInSK9_cV01yIy9AE_rC0gCjrygXq3VfH8JpfCOJEphhQN3v0hi8O08sYyiwGeNYsvU',
+    title: "Zack Snyder's Justice League",
     director: 'VSsYii',
     cast: 'Gal Gadot',
     genre: 'Action'

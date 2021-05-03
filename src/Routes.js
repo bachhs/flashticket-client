@@ -56,6 +56,11 @@ function Routes() {
                 />
                 <Route
                   exact
+                  path="/bookingprocess"
+                  component={lazy(() => import('src/views/BookingStepper'))}
+                />
+                <Route
+                  exact
                   path="/"
                   component={lazy(() => import('src/views/HomeView'))}
                 />
