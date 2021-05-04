@@ -62,20 +62,13 @@ const useStyles = makeStyles((theme) => ({
 
 function MovieInfo(props) {
   const classes = useStyles(props);
-  const movie = [{
+  const movie = {
     image: 'http://game4v.com/g4v-content/uploads/2021/02/Justice-League-Snyder-Cut-1-game4v.jpg',
     title: "Zack Snyder's Justice League",
-    director: 'VSsYii',
+    director: 'Zack Snyder',
     cast: 'Gal Gadot',
     genre: 'Action'
-  },
-  {
-    image: 'http://game4v.com/g4v-content/uploads/2021/02/Justice-League-Snyder-Cut-1-game4v.jpg',
-    title: "Zack Snyder's Justice League",
-    director: 'VSsYii',
-    cast: 'Gal Gadot',
-    genre: 'Action'
-  }];
+  };
 
   return (
     <Grid item xs={12} md={12} lg={3} className={classes.rootMovie}>
@@ -83,10 +76,10 @@ function MovieInfo(props) {
         <div
           className={classes.background}
           style={{
-            backgroundImage: `url(${movie[1].image})`
+            backgroundImage: `url(${movie.image})`
           }}
         />
-        <Typography className={classes.title}>{movie[1].title}</Typography>
+        <Typography className={classes.title}>{movie.title}</Typography>
         <div className={classes.info}>
 
           <div className={classes.infoBox}>
@@ -94,7 +87,7 @@ function MovieInfo(props) {
               Director
             </Typography>
             <Typography variant="caption" color="inherit">
-              {movie[1].director}
+              {movie.director}
             </Typography>
           </div>
 
@@ -103,7 +96,7 @@ function MovieInfo(props) {
               Cast
             </Typography>
             <Typography variant="caption" color="inherit">
-              {movie[1].cast}
+              {movie.cast}
             </Typography>
           </div>
 
@@ -112,7 +105,7 @@ function MovieInfo(props) {
               Genre
             </Typography>
             <Typography variant="caption" color="inherit">
-              {movie[1].genre}
+              {movie.genre}
             </Typography>
           </div>
 

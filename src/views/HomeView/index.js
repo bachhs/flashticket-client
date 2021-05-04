@@ -190,7 +190,11 @@ function HomeView() {
                     component="p"
                     className={classes.desc}
                   >
-                    A Story about both of VSsYii pet
+                    The epic next chapter in the cinematic Monsterverse pits
+                    two of the greatest icons
+                    in motion picture history against one another -
+                    the fearsome Godzilla and the mighty
+                    Kong - with humanity caught in the balance.
                   </Typography>
                 </CardContent>
               </Card>
@@ -221,7 +225,9 @@ function HomeView() {
                     component="p"
                     className={classes.desc}
                   >
-                    A Story about VSsYii
+                    An orphaned boy enrolls in a school of wizardry,
+                    where he learns the truth about himself,
+                    his family and the terrible evil that haunts the magical world.
                   </Typography>
                 </CardContent>
               </Card>
@@ -252,7 +258,9 @@ function HomeView() {
                     component="p"
                     className={classes.desc}
                   >
-                    VSsYii
+                    With the help of remaining allies, the Avengers assemble
+                    once more in order to reverse Thanos&#39 actions and restore
+                    balance to the universe.
                   </Typography>
                 </CardContent>
               </Card>
