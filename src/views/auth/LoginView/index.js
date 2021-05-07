@@ -70,7 +70,11 @@ function LoginView() {
   const query = useQuery();
 
   const onSubmitSuccess = () => {
-    history.push(`/${query.get('redirectUrl')}`);
+    if (query.has('redirectUrl')) {
+      history.push(`/${query.get('redirectUrl')}`);
+    } else {
+      history.push('/');
+    }
   };
 
   const handleBack = () => {

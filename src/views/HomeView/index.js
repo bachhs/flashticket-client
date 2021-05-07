@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -63,6 +64,14 @@ function HomeView() {
 
   const isMountedRef = useIsMountedRef();
 
+  const [concerts, setConcers] = useState([
+    { id: 1, title: 'Yanni Live at El Morro, Puerto Rico', poster: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/159d35c6-a5b1-469a-a9cd-31928db4e349/d4zvorh-7acf1c50-d19a-4778-9813-5ab98ff41398.jpg/v1/fill/w_496,h_350,q_70,strp/yanni_live_at_el_morro_puerto_rico_by_mizomix_d4zvorh-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD00MzIiLCJwYXRoIjoiXC9mXC8xNTlkMzVjNi1hNWIxLTQ2OWEtYTljZC0zMTkyOGRiNGUzNDlcL2Q0enZvcmgtN2FjZjFjNTAtZDE5YS00Nzc4LTk4MTMtNWFiOThmZjQxMzk4LmpwZyIsIndpZHRoIjoiPD02MTIifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.BHHQZHNKPDH4Bp0Fw4AtehpmEe8AsYrxR5nzGd8S0TQ' },
+    { id: 2, title: 'See Sing Share', poster: 'https://i1.sndcdn.com/artworks-000235391545-mo53ci-t500x500.jpg' },
+    { id: 3, title: 'Closer', poster: 'https://images-na.ssl-images-amazon.com/images/I/51C%2BsJBSW7L.jpg' },
+    { id: 4, title: 'Dạ Khúc Dương Cầm', poster: 'https://i1.sndcdn.com/artworks-000251908583-y8oh93-t500x500.jpg' },
+    { id: 5, title: 'Asia 77 - Dòng Nhạc Anh Bằng & Lam Phương', poster: 'https://i.ytimg.com/vi/8-RBsLFGMZE/maxresdefault.jpg' }
+  ]);
+
   const [movies, setMovies] = useState([
     { id: 1 },
     { id: 2 },
@@ -72,11 +81,11 @@ function HomeView() {
   ]);
 
   const [sports, setSports] = useState([
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 }
+    { id: 1, title: 'Aston Villa - West Brom', poster: 'https://i.imgur.com/8CxgGsF.png' },
+    { id: 2, title: 'Chelsea – Real Madrid', poster: 'https://i.imgur.com/rWKXsxK.jpg' },
+    { id: 3, title: 'Leeds – Man Utd', poster: 'https://i.imgur.com/V3IKlAD.png' },
+    { id: 4, title: 'Man Utd – Roma', poster: 'https://i.imgur.com/pMYFZpW.jpg' },
+    { id: 5, title: 'Wolves – Burnley', poster: 'https://i.imgur.com/5h3jEC0.png' }
   ]);
 
   const getMovies = useCallback(() => {
@@ -92,26 +101,9 @@ function HomeView() {
       });
   }, [isMountedRef]);
 
-  const getSports = useCallback(() => {
-    axios
-      .get(`${process.env.REACT_APP_API}/sports?sort=createdDate,desc&size=6`)
-      .then((response) => {
-        if (response && response.data) {
-          setSports(response.data._embedded.sports);
-        }
-      })
-      .catch(() => {
-
-      });
-  }, [isMountedRef]);
-
   useEffect(() => {
     getMovies();
   }, [getMovies]);
-
-  useEffect(() => {
-    // getSports();
-  }, [getSports]);
 
   return (
     <>
@@ -136,7 +128,7 @@ function HomeView() {
             Concerts
           </Typography>
           <Box height={40} />
-          <Carousel items={movies} />
+          <Carousel items={concerts} />
         </Grid>
       </div>
 
